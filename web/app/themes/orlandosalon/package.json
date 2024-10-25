@@ -16,11 +16,23 @@
     "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
     "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint resources/scripts",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "test": "yarn lint"
   },
   "devDependencies": {
-    "@roots/bud": "6.20.0",
-    "@roots/bud-tailwindcss": "6.20.0",
-    "@roots/sage": "6.20.0"
+    "@roots/bud": "6.23.3",
+    "@roots/bud-eslint": "^6.23.3",
+    "@roots/bud-prettier": "^6.23.3",
+    "@roots/bud-sass": "^6.23.3",
+    "@roots/bud-stylelint": "^6.23.3",
+    "@roots/eslint-config": "^6.23.3",
+    "@roots/sage": "6.23.3"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
   }
 }
