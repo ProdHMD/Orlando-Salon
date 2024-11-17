@@ -1816,6 +1816,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@studio-freight/lenis@npm:^1.0.42":
+  version: 1.0.42
+  resolution: "@studio-freight/lenis@npm:1.0.42"
+  checksum: 506e1ee1277efb54ade2c02ba1cfe5ab096b06d306102987f8ae4e48be19f6f294b8d1ea1873857d31d9a9265a39b69e408f42edf69c81417a1f76b03ce7e45d
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-arm64@npm:1.7.2":
   version: 1.7.2
   resolution: "@swc/core-darwin-arm64@npm:1.7.2"
@@ -9938,6 +9945,7 @@ __metadata:
     "@roots/bud-stylelint": ^6.23.3
     "@roots/eslint-config": ^6.23.3
     "@roots/sage": 6.23.3
+    "@studio-freight/lenis": ^1.0.42
     bootstrap: ^5.3.3
   languageName: unknown
   linkType: soft

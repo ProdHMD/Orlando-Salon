@@ -1,1 +1,20 @@
+/** Import Bootstrap */
 @import 'bootstrap/scss/bootstrap';
+
+/** Import common styles */
+@import 'common/fonts';
+@import 'common/variables';
+@import 'common/typography';
+
+/** Import layouts */
+@import 'layouts/header';
+@import 'layouts/footer';
+@import 'layouts/pages';
+
+/** Import components */
+@import 'components/lenis';
+
+/** Import pages */
+@import 'pages/01-home';
+@import 'pages/02-booking';
+@import 'pages/03-products';
