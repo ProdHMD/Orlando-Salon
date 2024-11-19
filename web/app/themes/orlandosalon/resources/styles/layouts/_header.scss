@@ -1,2 +1,26 @@
-/* stylelint-disable media-feature-range-notation -- min and max should be allowed */
+/** Header styles */
+#header {
+    .navbar {
+        padding-left: 3rem;
+        padding-right: 3rem;
+
+        #nav-container {
+            @include headings;
+
+            .navbar-nav {
+                .menu-item {
+                    a {
+                        padding: 0 0.5rem;
+                    }
+
+                    &:last-child {
+                        a {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 

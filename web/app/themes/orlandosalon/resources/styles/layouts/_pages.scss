@@ -1,2 +1,42 @@
-/* stylelint-disable media-feature-range-notation -- min and max should be allowed */
+/** Main body */
+html {
+    /** Base font size */
+    font-size: 18px;
+    letter-spacing: 0;
 
+    body {
+        @include main-font;
+        @include light-font;
+        @include text_size_18;
+        @include main-bg;
+
+        @include media-breakpoint-up(xxxl) {
+            @include text_size_24;
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            @include main-font;
+            @include light-font;
+            @include headings;
+            
+            margin-bottom: 0;
+        }
+
+        a {
+            &:not(.button) {
+                color: $white;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+/** Global page styles */
+#main {
+    @include main-font;
+    @include light-font;
+}

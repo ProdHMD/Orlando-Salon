@@ -1,0 +1,75 @@
+/** Import Bootstrap functions */
+@import 'bootstrap/scss/functions';
+
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+/** Colors */
+$black: #191919;
+$white: #fff;
+$dark_grey: #6b6b6b;
+
+/** Woo colors */
+$white_half: rgba(248 248 248 / 75%);
+$white_full: rgba(248 248 248 / 100%);
+$purple: #a46497;
+$green: #8fae1b;
+$grey: #ebe9eb;
+
+/** Social media colors */
+$instagram: #c32aa3;
+$facebook: #1877f2;
+$twitter: #fff;
+$youtube: #f00;
+
+/** WordPress grid breakpoint */
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    wpmd: 783px,
+    lg: 992px,
+    ml: 1024px,
+    xl: 1200px,
+    xxl: 1440px,
+    xxxl: 1920px,
+);
+
+/** Background color and font mixins */
+@mixin main-bg {
+    background-color: $black;
+    color: $white;
+}
+
+@mixin main-nav {
+    @include main-font;
+    @include light-font;
+
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin transition {
+    transition: 0.2s all ease-in-out;
+}
+
+@mixin button {
+    @include main-font;
+    @include light-font;
+    @include headings;
+    @include transition;
+
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+        @include transition;
+
+        background-color: $dark_grey;
+    }
+}

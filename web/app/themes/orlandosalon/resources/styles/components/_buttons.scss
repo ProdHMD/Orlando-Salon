@@ -1,0 +1,8 @@
+/** Button styles */
+.button {
+    @include button;
+    
+    padding: 1rem;
+    border: none;
+    text-decoration: none;
+}

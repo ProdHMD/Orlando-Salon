@@ -1,0 +1,58 @@
+/** Footer styles */
+#footer {
+    #top-content {
+        padding-left: 9rem;
+        padding-right: 9rem;
+
+        @include media-breakpoint-down(ml) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #site-map {
+            @include text_size_18;
+
+            @include media-breakpoint-up(xxxl) {
+                @include text_size_24;
+            }
+    
+            #site-map-menu,
+            #policies-menu {
+                @include headings;
+                
+                letter-spacing: 0.1111rem;
+                flex-direction: column;
+    
+                .menu-item {
+                    margin-bottom: 1rem;
+    
+                    &.current-menu-item {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    
+        #contact-info {
+            @include text_size_24;
+
+            @include media-breakpoint-up(xxxl) {
+                @include text_size_36;
+            }
+    
+            p {
+                line-height: normal;
+            }
+    
+            .text-2 {
+                margin-bottom: 3rem;
+            }
+        }
+    }
+    
+    #bottom-content {
+        #to-top {
+            @include headings;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+/* stylelint-disable at-extend-no-missing-placeholder */
+
+/**
+ * WordPress Generated Classes
+ * @see http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+ */
+
+$spacer: 1rem;
+
+/** Media alignment */
+.alignnone {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.aligncenter {
+    display: block;
+    margin: calc($spacer / 2) auto;
+    height: auto;
+}
+
+.alignleft,
+.alignright {
+    margin-bottom: calc($spacer / 2);
+    height: auto;
+}
+
+@include media-breakpoint-up(sm) {
+    .alignleft {
+        float: left;
+        margin-right: calc($spacer / 2);
+    }
+
+    .alignright {
+        float: right;
+        margin-left: calc($spacer / 2);
+    }
+}
+
+/** Captions */
+.wp-caption {
+    @extend .figure;
+}
+
+.wp-caption img {
+    @extend .figure-img;
+    @extend .img-fluid;
+}
+
+.wp-caption-text {
+    @extend .figure-caption;
+}
+
+/** Text meant only for screen readers */
+.screen-reader-text {
+    @extend .sr-only !optional;
+    @extend .sr-only-focusable !optional;
+}
+
+.sr-only {
+    &:focus {
+        width: auto;
+        height: auto;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        z-index: 10000;
+        background-color: $black;
+        color: $white;
+        position: fixed;
+        clip: auto;
+    }
+}

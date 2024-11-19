@@ -1,0 +1,21 @@
+@import url("https://use.typekit.net/grb1gsh.css");
+
+@mixin main-font {
+    font-family: neuzeit-grotesk, sans-serif;
+}
+
+@mixin light-font {
+    font-weight: 300;
+}
+
+@mixin regular-font {
+    font-weight: 400;
+}
+
+@mixin bold-font {
+    font-weight: 700;
+}
+
+@mixin black-font {
+    font-weight: 900;
+}

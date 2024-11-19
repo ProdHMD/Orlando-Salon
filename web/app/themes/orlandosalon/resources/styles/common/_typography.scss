@@ -1,0 +1,75 @@
+@mixin text_size_72 {
+    font-size: 4rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 3.5rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 2.6667rem;
+    }
+}
+
+@mixin text_size_64 {
+    font-size: 3.5rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2.6667rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+    }
+}
+
+@mixin text_size_48 {
+    font-size: 2.6667rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 1.3333rem;
+    }
+}
+
+@mixin text_size_36 {
+    font-size: 2rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.3333rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 1.1111rem;
+    }
+}
+
+@mixin text_size_24 {
+    font-size: 1.3333rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.1111rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 1rem;
+    }
+}
+
+@mixin text_size_18 {
+    font-size: 1rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 0.8889rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 0.6667rem;
+    }
+}
+
+@mixin headings {
+    text-transform: uppercase;
+}
