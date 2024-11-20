@@ -21,21 +21,40 @@
                         padding: 0 0.5rem;
                     }
 
+                    /** Spacing for first two menu items */
                     &:nth-child(1),
                     &:nth-child(2) {
                         margin: 0 0.5rem;
                     }
 
+                    /** Spacing for first icon item */
                     &:nth-child(3) {
                         margin-left: 0.5rem;
                     }
 
+                    /** Kills padding on last menu item */
                     &:last-child {
                         a {
                             padding-right: 0;
                         }
                     }
 
+                    /** Adds hover for icons */
+                    &.icon {
+                        a {
+                            @include color-transition;
+
+                            color: $white;
+
+                            &:hover {
+                                @include color-transition;
+
+                                color: $link_grey;
+                            }
+                        }
+                    }
+
+                    /** Adds underline for current page */
                     &.current-menu-item {
                         text-decoration: underline;
                     }
