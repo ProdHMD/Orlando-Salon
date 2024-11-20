@@ -1,5 +1,13 @@
 /** Header styles */
 #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    z-index: 9999;
+
+    /** Navigation styles */
     .navbar {
         padding-left: 3rem;
         padding-right: 3rem;
@@ -13,14 +21,43 @@
                         padding: 0 0.5rem;
                     }
 
+                    &:nth-child(1),
+                    &:nth-child(2) {
+                        margin: 0 0.5rem;
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 0.5rem;
+                    }
+
                     &:last-child {
                         a {
                             padding-right: 0;
                         }
                     }
+
+                    &.current-menu-item {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
+    }
+
+    /** If logged in */
+    body.logged-in & {
+        margin-top: 32px;
+
+        @include media-breakpoint-down(wpmd) {
+            margin-top: 46px;
+        }
+    }
+}
+
+/** Admin bar */
+#wpadminbar {
+    @include media-breakpoint-down(wpmd) {
+        position: fixed;
     }
 }
 

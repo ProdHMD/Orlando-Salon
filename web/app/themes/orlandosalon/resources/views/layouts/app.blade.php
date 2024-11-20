@@ -10,6 +10,8 @@
   <body @php(body_class())>
     @php(wp_body_open())
 
+    <div id="top"></div>
+
     <div id="app">
       <a class="sr-only focus:not-sr-only visually-hidden-focusable" href="#main">
         {{ __('Skip to content') }}

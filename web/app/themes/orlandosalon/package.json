@@ -32,8 +32,12 @@
     "@roots/sage": "6.23.3"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
+    "@fortawesome/fontawesome-svg-core": "^6.7.0",
+    "@fortawesome/free-brands-svg-icons": "^6.7.0",
+    "@fortawesome/free-solid-svg-icons": "^6.7.0",
     "@popperjs/core": "^2.11.8",
-    "@studio-freight/lenis": "^1.0.42",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "lenis": "^1.1.16"
   }
 }

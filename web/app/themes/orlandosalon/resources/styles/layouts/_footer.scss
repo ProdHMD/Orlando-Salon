@@ -21,6 +21,11 @@
                 @include headings;
                 
                 letter-spacing: 0.1111rem;
+                text-indent: -0.1111rem;
+                direction: rtl;
+                text-align: left;
+                display: inline-block;
+                overflow: hidden;
                 flex-direction: column;
     
                 .menu-item {
@@ -47,12 +52,56 @@
             .text-2 {
                 margin-bottom: 3rem;
             }
+
+            .text-3 {
+                margin-bottom: 1.5rem;
+            }
+
+            .social {
+                @include color-transition;
+
+                &.instagram {
+                    &:hover {
+                        @include color-transition;
+
+                        color: $instagram;
+                    }
+                }
+
+                &.facebook {
+                    &:hover {
+                        @include color-transition;
+
+                        color: $facebook;
+                    }
+                }
+
+                &.tiktok {
+                    &:hover {
+                        @include color-transition;
+
+                        color: $tiktok;
+                    }
+                }
+            }
         }
     }
     
     #bottom-content {
         #to-top {
             @include headings;
+            
+            letter-spacing: 0.125rem;
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+
+                .fa-arrow-up {
+                    margin-left: 1rem;
+                }
+            }
         }
     }
 }

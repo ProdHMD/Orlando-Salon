@@ -19,11 +19,11 @@
             </div>
         </div>
 
-        <div class="row pt-3" id="bottom-content">
+        <div class="row mt-5" id="bottom-content">
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-6" id="credits"><?php echo '©' . date('Y') . ' Orlando Salon. All rights reserved.'; ?></div>
-                    <div class="col-lg-6 text-end" id="to-top">Back To Top</div>
+                    <div class="col-lg-6 text-end" id="to-top"><a href="#top" id="scroll-to-top">Back To Top<i class="fas fa-arrow-up"></i></a></div>
                 </div>
             </div>
         </div>

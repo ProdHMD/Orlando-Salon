@@ -1,9 +1,15 @@
 /** Import Bootstrap functions */
 @import 'bootstrap/scss/functions';
 
+/** Import Fancybox functions */
+@import '@fancyapps/ui/dist/fancybox/fancybox.css';
+
 /** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
+
+/** Turn on Bootstrap negative margin */
+$enable-negative-margins: true;
 
 /** Colors */
 $black: #191919;
@@ -22,6 +28,7 @@ $instagram: #c32aa3;
 $facebook: #1877f2;
 $twitter: #fff;
 $youtube: #f00;
+$tiktok: #00f2ea;
 
 /** WordPress grid breakpoint */
 $grid-breakpoints: (
@@ -56,6 +63,10 @@ $grid-breakpoints: (
 
 @mixin transition {
     transition: 0.2s all ease-in-out;
+}
+
+@mixin color-transition {
+    transition: 0.2s color ease-in-out;
 }
 
 @mixin button {

@@ -1,0 +1,205 @@
+/** Home styles */
+body {
+    &.home {
+        #app {
+            /** Hide logo on top */
+            #header {
+                .brand {
+                    visibility: hidden;
+                }
+            }
+
+            #main {
+                margin-top: 0;
+
+                /** Top Banner */
+                #top-banner {
+                    min-height: 100vh;
+                    position: relative;
+                    
+                    .image-block {
+                        margin-bottom: 2rem;
+
+                        .front-img {
+                            max-width: 45%;
+
+                            @include media-breakpoint-up(xxxl) {
+                                max-width: 100%;
+                            }
+                        }
+                    }
+
+                    .content-block {
+                        @include text_size_36;
+                        @include headings;
+
+                        @include media-breakpoint-up(xxxl) {
+                            @include text_size_48;
+                        }
+
+                        a {
+                            letter-spacing: 1rem;
+                            text-indent: -0.85rem;
+                            direction: rtl;
+                            text-align: left;
+                            display: inline-block;
+                            overflow: hidden;
+                        }
+                    }
+
+                    .background-block {
+                        position: absolute;
+                        inset: 0;
+                        z-index: 0;
+                        overflow: hidden;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            z-index: 1;
+                            opacity: 0.5;
+                            overflow: hidden;
+                            background-image: radial-gradient($black 1px, transparent 0);
+                            background-size: 10px 10px;
+                            background-position: -5px -5px;
+                        }
+                        
+                        .background-img {
+                            opacity: 0.5;
+                            margin-top: -15vh;
+                        }
+                    }
+                }
+
+                #section-2 {
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
+
+                    #main-content {
+                        .parallax-images {
+                            position: relative;
+
+                            .parallax-image {
+                                position: relative;
+
+                                &:nth-child(2n) {
+                                    margin-top: 40vh;
+                                    margin-left: -15vh;
+
+                                    @include media-breakpoint-between(xxl, xxxl) {
+                                        margin-top: 50vh;
+                                        margin-left: -15vh;
+                                    }
+
+                                    @include media-breakpoint-up(xxxl) {
+                                        margin-top: 50vh;
+                                        margin-left: -15vh;
+                                    }
+                                }
+
+                                &:nth-child(3n) {
+                                    margin-top: 5vh;
+                                    margin-left: -15vh;
+
+                                    @include media-breakpoint-between(xxl, xxxl) {
+                                        margin-top: 5vh;
+                                        margin-left: -20vh;
+                                    }
+
+                                    @include media-breakpoint-up(xxxl) {
+                                        margin-top: 5vh;
+                                        margin-left: -25vh;
+                                    }
+                                }
+                            }
+                        }
+
+                        .text-block {
+                            margin-bottom: 10vh;
+
+                            h2 {
+                                @include text_size_24;
+                                @include headings;
+
+                                letter-spacing: 0.85rem;
+                                text-indent: -0.6rem;
+                                direction: rtl;
+                                text-align: left;
+                                display: inline-block;
+                                overflow: hidden;
+
+                                @include media-breakpoint-up(xxxl) {
+                                    @include text_size_36;
+                                }
+                            }
+                        }
+                    }
+
+                    #closing-content {
+                        @include text_size_36;
+                        @include headings;
+
+                        text-align: center;
+                        margin-top: 3rem;
+                        z-index: 1;
+
+                        @include media-breakpoint-up(xxxl) {
+                            @include text_size_48;
+                        }
+
+                        a {
+                            letter-spacing: 1rem;
+                            text-indent: -0.85rem;
+                            direction: rtl;
+                            text-align: left;
+                            display: inline-block;
+                            overflow: hidden;
+                        }
+                    }
+                }
+
+                #section-3 {
+                    #carousel-toggle {
+                        margin-top: 2rem;
+
+                        .carousel-prev,
+                        .carousel-next {
+                            @include text_size_24;
+
+                            width: 3rem;
+                            height: 3rem;
+                            text-align: center;
+                            padding: 0.5rem;
+                            border-radius: 3rem;
+                            border: 1px solid $white;
+
+                            @include media-breakpoint-up(xxxl) {
+                                @include text_size_36;
+                                
+                                width: 4rem;
+                                height: 4rem;
+                                border-radius: 4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /** If logged in */
+    &.logged-in {
+        #app {
+            #main {
+                #top-banner {
+                    min-height: calc(100vh - 32px);
+
+                    @include media-breakpoint-down(wpmd) {
+                        min-height: calc(100vh - 46px);
+                    }
+                }
+            }
+        }
+    }
+}

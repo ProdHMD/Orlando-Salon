@@ -139,3 +139,14 @@ add_filter('sage-woocommerce/templates', function ($paths) {
     $paths[] = WP_PLUGIN_DIR . '/woocommerce-subscriptions/templates/';
     return $paths;
 });
+
+/** Add link to nav-link instead of  */
+add_filter('wp_nav_menu_objects', function ($items) {
+    foreach($items as &$item) {
+        $icon = get_field('icon', $item);
+        if($icon) {
+            $item->title = '<i class="fa fa-'.$icon.'"></i>';
+        }
+    }
+    return $items;
+});

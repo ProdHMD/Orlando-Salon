@@ -39,4 +39,6 @@ html {
 #main {
     @include main-font;
     @include light-font;
+
+    margin-top: calc(110px);
 }

@@ -773,6 +773,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fancyapps/ui@npm:^5.0.36":
+  version: 5.0.36
+  resolution: "@fancyapps/ui@npm:5.0.36"
+  checksum: 3e3a9bb71e3fa84d49ac7713a8d235d455cf3edb5b063d05042c845e98e7ce66887190a93c5fd6c1c18b7d0db4604f6c4b582707b766b7b2145a0d55c846c4ba
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-common-types@npm:6.7.0":
+  version: 6.7.0
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.7.0"
+  checksum: d7c82e606cfe517d563f6ecb3d840319d4cf23d2033dfc1c9daf9607870102ed945702e72d77858c95ffb191df0e889b744c415fde8ceed41003f9403567c91e
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-svg-core@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.7.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.7.0
+  checksum: 28fd6a24439d6afed9bbebf583111fb72f4eabf199afef7f95ffff58856bdad061225e81e30a174fbc190f76a6271a2d61f0c79612e493742471b0c09b4833f7
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-brands-svg-icons@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "@fortawesome/free-brands-svg-icons@npm:6.7.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.7.0
+  checksum: e4fa9b03ff015219cdddaf78244dc2d171b0ffb95b3dad7d1cc7bf1a62fcbe6de2ff2dcd0d9ac9896e9b536ea524ea4718af94375f6ba3db4c03b66fe822f8ca
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-solid-svg-icons@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:6.7.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.7.0
+  checksum: f1e2b0db23bae0bced355c413349e8a1fa6997a8692de53a5e08eff8a25363c8345633be331a7ccafd5e6f1a65f65b8f07a2c6a4e29caa190eea78b3fd1d397e
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -1813,13 +1854,6 @@ __metadata:
   version: 0.27.8
   resolution: "@sinclair/typebox@npm:0.27.8"
   checksum: 00bd7362a3439021aa1ea51b0e0d0a0e8ca1351a3d54c606b115fdcc49b51b16db6e5f43b4fe7a28c38688523e22a94d49dd31168868b655f0d4d50f032d07a1
-  languageName: node
-  linkType: hard
-
-"@studio-freight/lenis@npm:^1.0.42":
-  version: 1.0.42
-  resolution: "@studio-freight/lenis@npm:1.0.42"
-  checksum: 506e1ee1277efb54ade2c02ba1cfe5ab096b06d306102987f8ae4e48be19f6f294b8d1ea1873857d31d9a9265a39b69e408f42edf69c81417a1f76b03ce7e45d
   languageName: node
   linkType: hard
 
@@ -6908,6 +6942,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lenis@npm:^1.1.16":
+  version: 1.1.16
+  resolution: "lenis@npm:1.1.16"
+  peerDependencies:
+    react: ">=17.0.0"
+    vue: ">=3.0.0"
+  peerDependenciesMeta:
+    react:
+      optional: true
+    vue:
+      optional: true
+  checksum: ac8c08d68ee271e331939f85a205f8bc537ec4dd5fb5bb1ef0891d3919409add7a5215071cbb7744e8295011ef0ad98de70b61698b514b674e9c38094c813c80
+  languageName: node
+  linkType: hard
+
 "levn@npm:^0.4.1":
   version: 0.4.1
   resolution: "levn@npm:0.4.1"
@@ -9937,6 +9986,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sage@workspace:."
   dependencies:
+    "@fancyapps/ui": ^5.0.36
+    "@fortawesome/fontawesome-svg-core": ^6.7.0
+    "@fortawesome/free-brands-svg-icons": ^6.7.0
+    "@fortawesome/free-solid-svg-icons": ^6.7.0
     "@popperjs/core": ^2.11.8
     "@roots/bud": 6.23.3
     "@roots/bud-eslint": ^6.23.3
@@ -9945,8 +9998,8 @@ __metadata:
     "@roots/bud-stylelint": ^6.23.3
     "@roots/eslint-config": ^6.23.3
     "@roots/sage": 6.23.3
-    "@studio-freight/lenis": ^1.0.42
     bootstrap: ^5.3.3
+    lenis: ^1.1.16
   languageName: unknown
   linkType: soft
 
