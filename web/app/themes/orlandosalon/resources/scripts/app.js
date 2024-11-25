@@ -90,11 +90,11 @@ domReady(async () => {
       const heightDiff = section.offsetHeight - section.parentElement.offsetHeight;
       
       gsap.fromTo(section,{ 
-        y: -heightDiff
+        y: -heightDiff,
       }, {
         scrollTrigger: {
           trigger: section,
-          scrub: true
+          scrub: true,
         },
         y: 100,
         ease: 'none',
