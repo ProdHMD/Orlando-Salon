@@ -33,26 +33,33 @@
         <div class="row" id="section-2">
             <?php while(have_rows('middle_section')) : the_row(); ?>
                 <div class="col-lg-12" id="main-content">
-                    <div class="row">
+                    <div class="row justify-content-evenly" id="scroll-container">
                         <?php 
                             $images = get_sub_field('floating_images');
-                            if($images) : 
+                            if($images) :
                         ?>
-                            <div class="col-lg-8 ps-0">
-                                <ul class="row list-unstyled parallax-images">
-                                    <?php foreach($images as $image) : ?>
+                            <div class="col-lg-8 ps-0 d-flex flex-column justify-content-evenly" id="parallax-container">
+                                <?php $imageColumns = array_chunk($images, 3); ?>
+                                <?php foreach($imageColumns as $image) : ?>
+                                    <ul class="row list-unstyled parallax-images">
                                         <li class="col-lg-5 parallax-image">
-                                            <img class="img-fluid" src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                                            <img class="img-fluid" src="<?php echo esc_url($image[0]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[0]['alt']); ?>">
                                         </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                                        <li class="col-lg-5 parallax-image">
+                                            <img class="img-fluid" src="<?php echo esc_url($image[1]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[1]['alt']); ?>">
+                                        </li>
+                                        <li class="col-lg-5 parallax-image">
+                                            <img class="img-fluid" src="<?php echo esc_url($image[2]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[2]['alt']); ?>">
+                                        </li>
+                                    </ul>
+                                <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
 
                         <?php if(have_rows('text_block')) : ?>
-                            <div class="col-lg-4 pe-5">
+                            <div class="col-lg-4 pe-5 d-flex flex-column justify-content-start" id="text-container">
                                 <?php while(have_rows('text_block')) : the_row(); ?>
-                                    <div class="text-block">
+                                    <div class="text-block d-flex flex-column justify-content-center">
                                         <h2><?php echo get_sub_field('heading'); ?></h2>
                                         <p><?php echo get_sub_field('content'); ?></p>
                                     </div>    
@@ -61,12 +68,6 @@
                         <?php endif; ?>
                     </div>
                 </div>
-
-                <?php if(get_sub_field('closing_content')) : ?>
-                    <div class="col-lg-12" id="closing-content">
-                        <?php echo get_sub_field('closing_content'); ?>
-                    </div>
-                <?php endif; ?>
             <?php endwhile; ?>
         </div>
     <?php endif; ?>
@@ -76,21 +77,35 @@
         if($images) : 
     ?>
         <div class="row" id="section-3">
-            <div class="col-lg-12" id="carousel-container">
-                <div class="row">
-                    <?php foreach($images as $image) : ?>
-                        <div class="col-md-3">
-                            <img class="img-fluid" src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+            <?php if(get_field('closing_content')) : ?>
+                <div class="col-lg-12" id="closing-content">
+                    <?php echo get_field('closing_content'); ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="container-fluid p-0" id="carousel-container">
+                <div class="row mx-auto my-auto justify-content-center">
+                    <div class="carousel slide p-0" id="carousel-main">
+                        <div class="carousel-inner" role="listbox">
+                            <?php $i = 0; foreach($images as $image) : ?>
+                                <div class="carousel-item<?php if($i == 0) echo ' active'; ?>">
+                                    <div class="col-lg-3">
+                                        <a href="<?php echo $image['url'] ?>" data-fancybox="gallery">
+                                            <img class="img-fluid" src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php $i++; endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-lg-12" id="carousel-toggle">
+            <div class="container-fluid" id="carousel-toggle">
                 <div class="row">
                     <div class="col-lg-4 offset-lg-4 d-flex justify-content-center gap-3">
-                        <div class="carousel-prev"><i class="fas fa-arrow-left"></i></div>
-                        <div class="carousel-next"><i class="fas fa-arrow-right"></i></div>
+                        <a class="carousel-prev carousel-control-prev" href="#carousel-main" data-bs-slide="prev"><i class="fas fa-arrow-left"></i></a>
+                        <a class="carousel-next carousel-control-next" href="#carousel-main" data-bs-slide="next"><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

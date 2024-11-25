@@ -25,7 +25,7 @@ the readme will list any important changes.
           do_action('woocommerce_before_main_content');
         @endphp
 
-        <header class="woocommerce-products-header">
+        <header class="woocommerce-products-header" id="page-header">
           @if (apply_filters('woocommerce_show_page_title', true))
             <h1 class="woocommerce-products-header__title page-title">{!! woocommerce_page_title(false) !!}</h1>
           @endif

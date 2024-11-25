@@ -7,10 +7,27 @@
     margin-top: 0;
     z-index: 9999;
 
+    /** Scrolled header styles */
+    &.scrolled {
+        .navbar {
+            @include transition;
+
+            background-color: $black;
+        }
+    }
+
     /** Navigation styles */
     .navbar {
         padding-left: 3rem;
         padding-right: 3rem;
+
+        .brand {
+            &:hover {
+                &::after {
+                    content: none;
+                }
+            }
+        }
 
         #nav-container {
             @include headings;
@@ -18,6 +35,8 @@
             .navbar-nav {
                 .menu-item {
                     a {
+                        @include main-nav;
+
                         padding: 0 0.5rem;
                     }
 
@@ -50,13 +69,19 @@
                                 @include color-transition;
 
                                 color: $link_grey;
+
+                                &::after {
+                                    content: none;
+                                }
                             }
                         }
                     }
 
                     /** Adds underline for current page */
                     &.current-menu-item {
-                        text-decoration: underline;
+                        &::after {
+                            width: calc(100% - 1rem);
+                        }
                     }
                 }
             }
@@ -77,6 +102,14 @@
 #wpadminbar {
     @include media-breakpoint-down(wpmd) {
         position: fixed;
+    }
+
+    a {
+        &:hover {
+            &::after {
+                content: none;
+            }
+        }
     }
 }
 

@@ -1,0 +1,133 @@
+/** Booking page styles */
+body {
+    &.booking {
+        #app {
+            #main {
+                padding: 2rem 0;
+
+                #container {
+                    .bookly-form {
+                        * {
+                            @include main-font;
+                            @include text_size_18;
+                        }
+                        
+                        .bookly-progress-tracker {
+                            > div {
+                                padding-left: 1rem;
+
+                                &:first-child {
+                                    padding-left: 0;
+                                }
+
+                                &.active {
+                                    color: $white !important;
+
+                                    .step {
+                                        background-color: $white;
+                                    }
+                                }
+
+                                .step {
+                                    border-radius: 0;
+                                    height: 1.5rem;
+                                    background: $dark_grey;
+                                }
+                            }
+                        }
+
+                        label {
+                            color: $white !important;
+                        }
+
+                        select,
+                        input:not([type=checkbox]) {
+                            @include text_size_18;
+
+                            border-radius: 0 !important;
+                            color: $black;
+                            background-color: $white;
+                            height: 1.5rem !important;
+                        }
+
+                        .text-bookly {
+                            &:not(:hover) {
+                                color: $black !important;
+                            }
+                        }
+
+                        .bookly-service-step {
+                            .bookly-week-days {
+                                input {
+                                    &[type=checkbox] {
+                                        background-color: $dark_grey;
+                                    }
+                                }
+                            }
+                        }
+
+                        .bookly-time-step {
+                            min-width: 100%;
+
+                            .bookly-columnizer {
+                                .bookly-day {
+                                    color: $black !important;
+                                    border-radius: 0;
+                                    border: none !important;
+                                }
+
+                                .bookly-hour {
+                                    border-radius: 0;
+                                    border: none !important;
+
+                                    &:hover {
+                                        .bookly-hour-icon {
+                                            border-color: $black !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .bookly-form-group {
+                            @include text_size_18;
+
+                            .iti {
+                                color: $black;
+
+                                .iti__dial-code {
+                                    color: $dark_grey;
+                                }
+                            }
+                        }
+
+                        .bookly-nav-steps {
+                            border-top: none !important;
+
+                            button {
+                                @include headings;
+                                
+                                font-weight: 400 !important;
+                                letter-spacing: 0.5rem;
+                                text-indent: 0.25rem;
+                                background-color: $white !important;
+                                color: $black !important;
+                                border-radius: 0 !important;
+                                margin: 0;
+                                padding: 1rem 4rem !important;
+
+                                > span {
+                                    color: $black !important;
+                                }
+                            }
+
+                            .bookly-time-next {
+                                padding: 0 4rem !important; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,9 +1,10 @@
-/** Main body */
+/** HTML styles */
 html {
     /** Base font size */
     font-size: 18px;
     letter-spacing: 0;
 
+    /** Body styles */
     body {
         @include main-font;
         @include light-font;
@@ -26,9 +27,24 @@ html {
             &:not(.button) {
                 color: $white;
                 text-decoration: none;
+                position: relative;
 
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: $white;
+                    transition: 0.2s width ease-in-out;
+                }
+            
                 &:hover {
-                    text-decoration: underline;
+                    &::after {
+                        width: 100%;
+                        transition: 0.2s width ease-in-out;
+                    }
                 }
             }
         }
@@ -41,4 +57,16 @@ html {
     @include light-font;
 
     margin-top: calc(110px);
+
+    :not(.home) & {
+        #page-header {
+            @include headings;
+
+            margin-bottom: 2rem;
+    
+            h1 {
+                letter-spacing: 1rem;
+            }
+        }
+    }
 }

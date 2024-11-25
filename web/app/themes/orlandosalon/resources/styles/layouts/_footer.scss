@@ -9,6 +9,7 @@
             padding-right: 0;
         }
 
+        /** Site map styles */
         #site-map {
             @include text_size_18;
 
@@ -30,14 +31,43 @@
     
                 .menu-item {
                     margin-bottom: 1rem;
+
+                    a {
+                        &:not(.button) {
+                            color: $white;
+                            text-decoration: none;
+                            position: relative;
+            
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 0;
+                                height: 1px;
+                                background-color: $white;
+                                transition: 0.2s width ease-in-out;
+                            }
+                        
+                            &:hover {
+                                &::after {
+                                    width: 100%;
+                                    transition: 0.2s width ease-in-out;
+                                }
+                            }
+                        }
+                    }
     
                     &.current-menu-item {
-                        text-decoration: underline;
+                        &::after {
+                            width: calc(100% - 1rem);
+                        }
                     }
                 }
             }
         }
     
+        /** Contact info styles */
         #contact-info {
             @include text_size_24;
 
@@ -60,6 +90,12 @@
             .social {
                 @include color-transition;
 
+                &:hover {
+                    &::after {
+                        content: none;
+                    }
+                }
+
                 &.instagram {
                     &:hover {
                         @include color-transition;
@@ -77,25 +113,38 @@
                 }
 
                 &.tiktok {
-                    &:hover {
-                        @include color-transition;
+                    @include filter-transition;
 
-                        color: $tiktok;
+                    &:hover {
+                        @include filter-transition;
+
+                        color: $white;
+                        filter: drop-shadow(1px 1px 0 #ff0050) drop-shadow(-1px -1px 0 #00f2ea);
                     }
                 }
             }
         }
     }
     
+    /** Bottom content styles */
     #bottom-content {
         #to-top {
             @include headings;
             
             letter-spacing: 0.125rem;
 
-            a {
+            #scroll-to-top {
+                @include color-transition;
+
                 &:hover {
+                    @include color-transition;
+
                     text-decoration: none;
+                    color: $link_grey;
+
+                    &::after {
+                        content: none;
+                    }
                 }
 
                 .fa-arrow-up {
