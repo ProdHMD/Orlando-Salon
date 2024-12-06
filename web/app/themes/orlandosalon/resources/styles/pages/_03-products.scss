@@ -1,0 +1,140 @@
+/** Products page styles */
+body {
+    &.woocommerce.archive {
+        #app {
+            #main {
+                padding: 2rem 0;
+
+                #products-container {
+                    .products {
+                        margin: 0 auto;
+                        clear: both;
+                        flex: 0 0 50%;
+                        order: 1;
+
+                        .product {
+                            margin: 0;
+                            float: none;
+                            clear: none;
+                            width: auto;
+                            flex: 0 0 50%;
+                            box-shadow: 0 0 1px 1px $dark_grey;
+
+                            &.featured {
+                                clear: none;
+                                flex: 0 0 100%;
+                            }
+
+                            .woocommerce-LoopProduct-link {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+
+                                &::after {
+                                    content: none;
+                                }
+
+                                .attachment-woocommerce_thumbnail {
+                                    @include transition;
+
+                                    opacity: 1;
+                                    margin: 0;
+                                }
+
+                                .inner-content {
+                                    @include transition;
+
+                                    opacity: 0;
+                                }
+
+                                &:hover {
+                                    .attachment-woocommerce_thumbnail {
+                                        @include transition;
+
+                                        opacity: 0.25;
+                                    }
+
+                                    .inner-content {
+                                        @include transition;
+                                        
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.not-featured {
+                            order: 1;
+                        }
+
+                        &:nth-child(4n) {
+                            order: 2;
+                        }
+
+                        &:nth-child(5n) {
+                            order: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.single-product {
+        #app {
+            #main {
+                padding: 2rem 0;
+
+                .product {
+                    .images {
+                        width: auto;
+                        flex: 0 0 50%;
+                        padding: 0;
+                    }
+
+                    .summary {
+                        width: auto;
+                        flex: 0 0 50%;
+                        padding-left: 5rem;
+
+                        .price-area {
+                            .price {
+                                @include bold-font;
+
+                                color: $white;
+                            }
+
+                            .cart {
+                                margin-bottom: 0;
+                                display: flex;
+                                flex-direction: column;
+
+                                .quantity {
+                                    margin: 0;
+
+                                    .qty {
+                                        width: 100%;
+                                        border: 1px solid $white;
+                                        background-color: $black;
+                                        color: $white;
+                                    }
+                                }
+
+                                .button {
+                                    @include button;
+                                    @include headings;
+
+                                    letter-spacing: 0.5rem;
+                                    border: none;
+                                    border-radius: 0;
+                                    padding: 1rem 2rem;
+                                    margin-top: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

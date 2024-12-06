@@ -7,6 +7,7 @@
 namespace App;
 
 use function Roots\bundle;
+use function Roots\asset;
 
 /**
  * Register the theme assets.
@@ -140,11 +141,13 @@ add_filter('sage-woocommerce/templates', function ($paths) {
     return $paths;
 });
 
-/** Add link to nav-link instead of  */
+/** 
+ * Add icon to nav link title if icon only is chosen.
+ */
 add_filter('wp_nav_menu_objects', function ($items) {
     foreach($items as &$item) {
         $icon = get_field('icon', $item);
-        if($icon) {
+        if ($icon) {
             $item->title = '<i class="fa fa-'.$icon.'"></i>';
         }
     }

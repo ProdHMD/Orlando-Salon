@@ -17,7 +17,7 @@ the readme will list any important changes.
 @extends('layouts.app')
 
 @section('content')
-  <div class="container-fluid ps-5 pe-5" id="container">
+  <div class="container-fluid" id="container">
     <div class="row">
       <div class="col-lg-12">
         @php
@@ -25,41 +25,49 @@ the readme will list any important changes.
           do_action('woocommerce_before_main_content');
         @endphp
 
-        <header class="woocommerce-products-header" id="page-header">
-          @if (apply_filters('woocommerce_show_page_title', true))
-            <h1 class="woocommerce-products-header__title page-title">{!! woocommerce_page_title(false) !!}</h1>
-          @endif
+        <div class="woocommerce-products-header row" id="page-header">
+          <div class="col-lg-12 ps-5 pe-5">
+            @if (apply_filters('woocommerce_show_page_title', true))
+              <h1 class="woocommerce-products-header__title page-title">{!! woocommerce_page_title(false) !!}</h1>
+            @endif
 
-          @php
-            do_action('woocommerce_archive_description')
-          @endphp
-        </header>
+            @php
+              do_action('woocommerce_archive_description')
+            @endphp
+          </div>
+        </div>
 
-        @if (woocommerce_product_loop())
-          @php
-            do_action('woocommerce_before_shop_loop');
-            woocommerce_product_loop_start();
-          @endphp
-
-          @if (wc_get_loop_prop('total'))
-            @while (have_posts())
+        <div class="row" id="products-container">
+          <div class="col-lg-12 p-0 d-flex flex-lg-row flex-column">
+            @if (woocommerce_product_loop())
               @php
-                the_post();
-                do_action('woocommerce_shop_loop');
-                wc_get_template_part('content', 'product');
+                do_action('woocommerce_before_shop_loop');
+                woocommerce_product_loop_start();
               @endphp
-            @endwhile
-          @endif
 
-          @php
-            woocommerce_product_loop_end();
-            do_action('woocommerce_after_shop_loop');
-          @endphp
-        @else
-          @php
-            do_action('woocommerce_no_products_found')
-          @endphp
-        @endif
+              @if (wc_get_loop_prop('total'))
+                @while (have_posts())
+                  @php
+                    the_post();
+                    do_action('woocommerce_shop_loop');
+                    wc_get_template_part('content', 'product');
+                  @endphp
+                @endwhile
+              @endif
+
+              @php
+                woocommerce_product_loop_end();
+                do_action('woocommerce_after_shop_loop');
+              @endphp
+            @else
+              <div class="ps-5 pe-5">
+                @php
+                  do_action('woocommerce_no_products_found')
+                @endphp
+              </div>
+            @endif
+          </div>
+        </div>
 
         @php
           do_action('woocommerce_after_main_content');

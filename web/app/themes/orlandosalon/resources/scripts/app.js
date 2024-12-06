@@ -208,7 +208,13 @@ domReady(async () => {
     const pageHeader = document.getElementById('page-header');
 
     // Get height of hero section
-    const pageHeaderHeight = pageHeader.offsetHeight;
+    let pageHeaderHeight;
+    if (document.getElementById('above-page-header')) {
+      const abovePageHeader = document.getElementById('above-page-header');
+      pageHeaderHeight = abovePageHeader.offsetHeight;
+    } else {
+      pageHeaderHeight = pageHeader.offsetHeight;
+    }
 
     // Listen to the scroll event
     window.addEventListener('scroll', function() {
