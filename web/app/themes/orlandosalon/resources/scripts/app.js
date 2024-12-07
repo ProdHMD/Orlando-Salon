@@ -229,6 +229,46 @@ domReady(async () => {
     });
   }
 
+  /**
+   * WOOCOMMERCE PAGES
+   */
+  function wooPage() {
+    if (document.body.classList.contains('single-product')) {
+      if (document.querySelector('.quantity')) {
+        // Get the container element where the buttons and input will be placed
+        var container = document.querySelector('.quantity');
+
+        // Create the "Decrease" button
+        var decreaseButton = document.createElement('button');
+        decreaseButton.textContent = '—';
+        decreaseButton.classList.add('decrease'); // optional for styling
+
+        // Create the "Increase" button
+        var increaseButton = document.createElement('button');
+        increaseButton.textContent = '+';
+        increaseButton.classList.add('increase'); // optional for styling
+
+        // Insert buttons before or after the number input
+        container.insertBefore(decreaseButton, container.firstChild);
+        container.appendChild(increaseButton);
+
+        // Get the input element
+        var input = container.querySelector('.qty');
+
+        // Event listeners to update the input value
+        decreaseButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          input.value = parseInt(input.value) - 1;
+        });
+
+        increaseButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          input.value = parseInt(input.value) + 1;
+        });
+      }
+    }
+  }
+
   // Run all pages function
   allPages();
 
@@ -237,6 +277,11 @@ domReady(async () => {
     homePage();
   } else {
     otherPage();
+  }
+
+  // Run WooCommerce function
+  if (document.body.classList.contains('woocommerce')) {
+    wooPage();
   }
 });
 

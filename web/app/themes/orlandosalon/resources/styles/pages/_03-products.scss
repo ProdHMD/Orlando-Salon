@@ -1,4 +1,4 @@
-/** Products page styles */
+/** Shop page styles */
 body {
     &.woocommerce.archive {
         #app {
@@ -25,39 +25,51 @@ body {
                                 flex: 0 0 100%;
                             }
 
-                            .woocommerce-LoopProduct-link {
-                                display: flex;
-                                flex-wrap: wrap;
-                                justify-content: center;
+                            .woocommerce {
+                                &-LoopProduct-link {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
 
-                                &::after {
-                                    content: none;
-                                }
+                                    &::after {
+                                        content: none;
+                                    }
 
-                                .attachment-woocommerce_thumbnail {
-                                    @include transition;
+                                    .attachment-woocommerce {
+                                        &_thumbnail {
+                                            @include transition;
 
-                                    opacity: 1;
-                                    margin: 0;
-                                }
-
-                                .inner-content {
-                                    @include transition;
-
-                                    opacity: 0;
-                                }
-
-                                &:hover {
-                                    .attachment-woocommerce_thumbnail {
-                                        @include transition;
-
-                                        opacity: 0.25;
+                                            opacity: 1;
+                                            margin: 0;
+                                        }
                                     }
 
                                     .inner-content {
                                         @include transition;
-                                        
-                                        opacity: 1;
+
+                                        opacity: 0;
+
+                                        .price {
+                                            @include bold-font;
+
+                                            color: $white;
+                                        }
+                                    }
+
+                                    &:hover {
+                                        .attachment-woocommerce {
+                                            &_thumbnail {
+                                                @include transition;
+
+                                                opacity: 0.25;
+                                            }
+                                        }
+
+                                        .inner-content {
+                                            @include transition;
+                                            
+                                            opacity: 1;
+                                        }
                                     }
                                 }
                             }
@@ -85,6 +97,18 @@ body {
             #main {
                 padding: 2rem 0;
 
+                .woocommerce-notices {
+                    &-wrapper {
+                        .woocommerce-message {
+                            .button {
+                                @include button-alt;
+
+                                border-radius: 0;
+                            }
+                        }
+                    }
+                }
+
                 .product {
                     .images {
                         width: auto;
@@ -111,12 +135,33 @@ body {
 
                                 .quantity {
                                     margin: 0;
+                                    border: 1px solid $white;
+                                    display: flex;
 
                                     .qty {
+                                        @include text_size_36;
+
                                         width: 100%;
-                                        border: 1px solid $white;
                                         background-color: $black;
                                         color: $white;
+                                        border: none;
+                                        appearance: textfield;
+
+                                        &::-webkit-outer-spin-button,
+                                        &::-webkit-inner-spin-button {
+                                            appearance: none;
+                                            margin: 0;
+                                        }
+                                    }
+
+                                    .decrease,
+                                    .increase {
+                                        @include text_size_36;
+
+                                        background-color: $black;
+                                        color: $white;
+                                        border: none;
+                                        padding: 0 1rem;
                                     }
                                 }
 
@@ -134,6 +179,186 @@ body {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    &.cart {
+        #app {
+            #main {
+                padding: 2rem 0;
+
+                #container {
+                    .wp-block {
+                        &-woocommerce-cart {
+                            .wc-block {
+                                &-components-main {
+                                    .wc-block {
+                                        &-cart-items {
+                                            thead {
+                                                tr {
+                                                    th {
+                                                        @include headings;
+                                                        @include text_size_18;
+                                                        @include regular-font;
+                                                    }
+                                                }
+                                            }
+
+                                            tbody {
+                                                tr {
+                                                    td {
+                                                        border-top-color: $dark_grey;
+
+                                                        &.wc-block {
+                                                            &-cart-item {
+                                                                &__image {
+                                                                    a {
+                                                                        &:hover {
+                                                                            &::after {
+                                                                                content: none;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                        .wc-block {
+                                                            &-components-quantity-selector {
+                                                                border: 1px solid $white;
+                                                                border-radius: 0;
+                                                            }
+
+                                                            &-cart-item__remove-link {
+                                                                @include button;
+
+                                                                padding: 0.25rem 0.5rem;
+                                                                text-decoration: none;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &-components-sidebar {
+                                    .wp-block {
+                                        &-woocommerce-cart-order-summary-block {
+                                            .wc-block-cart {
+                                                &__totals-title {
+                                                    @include headings;
+                                                    @include text_size_18;
+                                                    @include regular-font;
+                                                }
+                                            }
+
+                                            .wc-block {
+                                                &-components-totals-wrapper {
+                                                    &.wp-block {
+                                                        &-woocommerce-cart-order-summary-coupon-form-block {
+                                                            border-top-color: $dark_grey;
+
+                                                            .wc-block {
+                                                                &-components-totals-coupon__content {
+                                                                    input {
+                                                                        min-height: 100%;
+                                                                        border: none;
+                                                                        border-radius: 0;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .wc-block {
+                                        &-components-button {
+                                            @include button;
+
+                                            &:hover {
+                                                &::after {
+                                                    content: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.checkout {
+        #app {
+            #main {
+                padding: 2rem 0;
+
+                #container {
+                    form {
+                        input {
+                            &[type="text"],
+                            &[type="tel"],
+                            &[type="email"] {
+                                border-radius: 0;
+                                min-height: 100%;
+                            }
+                        }
+
+                        select,
+                        textarea {
+                            border-radius: 0;
+                        }
+
+                        .wc-block {
+                            &-components-radio-control--highlight-checked {
+                                .wc-block {
+                                    &-components-radio-control-accordion-option--checked-option-highlighted {
+                                        border-radius: 0;
+                                        box-shadow: inset 0 0 0 1px $dark_grey;
+                                    }
+                                }
+                            }
+                        }
+
+                        button {
+                            @include button;
+                        }
+                    }
+
+                    .wc-block {
+                        &-components-order-summary-item__quantity {
+                            box-shadow: none;
+                            background-color: $dark_grey;
+                            color: $white;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.my-account {
+        #app {
+            #main {
+                padding: 2rem 0;
+            }
+        }
+    }
+
+    &.refund-returns {
+        #app {
+            #main {
+                padding: 2rem 0;
             }
         }
     }

@@ -48,7 +48,7 @@ echo '</div></div>';
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
 
-	<div class="summary entry-summary pe-5 d-flex flex-column justify-content-between">
+	<div class="summary entry-summary pe-5 d-flex flex-column">
     <div class="content-area">
       <?php the_content(); ?>
     </div>

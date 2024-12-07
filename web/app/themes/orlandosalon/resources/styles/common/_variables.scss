@@ -104,3 +104,19 @@ $grid-breakpoints: (
         background-color: $dark_grey;
     }
 }
+
+@mixin button-alt {
+    @include main-font;
+    @include light-font;
+    @include headings;
+    @include transition;
+
+    background-color: $dark_grey;
+    color: $white;
+
+    &:hover {
+        @include transition;
+
+        background-color: $black;
+    }
+}

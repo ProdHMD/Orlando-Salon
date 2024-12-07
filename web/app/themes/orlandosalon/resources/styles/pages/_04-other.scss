@@ -1,0 +1,26 @@
+/** Other page styles */
+body {
+    &.cookie-policy {
+        #app {
+            #main {
+                padding: 2rem 0;
+            }
+        }
+    }
+
+    &.terms-conditions {
+        #app {
+            #main {
+                padding: 2rem 0;
+            }
+        }
+    }
+
+    &.privacy-policy {
+        #app {
+            #main {
+                padding: 2rem 0;
+            }
+        }
+    }
+}
