@@ -44,8 +44,7 @@ body {
 
                                 &::before {
                                     background-color: $black;
-                                    border-color: $white;
-                                    border: 1px solid;
+                                    border: 1px solid $white;
                                     outline: none;
                                 }
 
