@@ -6,6 +6,9 @@
 @import 'common/typography';
 @import 'common/variables';
 
+/** Import npm dependencies */
+@import "~hamburgers/_sass/hamburgers/hamburgers";
+
 /** Import components */
 @import 'components/wp-classes';
 @import 'components/lenis';

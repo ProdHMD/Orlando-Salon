@@ -1,4 +1,5 @@
 import domReady from '@roots/sage/client/dom-ready';
+import $ from 'jquery';
 
 // Import Bootstrap
 import 'bootstrap';
@@ -43,6 +44,12 @@ domReady(async () => {
    * ALL PAGES
    */
   function allPages() {
+    // Hamburger icon init
+    // JavaScript to be fired on all pages
+    $(".hamburger").on('click', function() {
+      $(this).toggleClass("is-active");
+    });
+
     // Scroll to top button init
     document.getElementById('scroll-to-top').addEventListener('click', function(event) {
       event.preventDefault(); // Prevent the default anchor behavior (i.e., the URL change)
@@ -100,6 +107,32 @@ domReady(async () => {
         ease: 'none',
       });
     });
+
+    // Set canvas on window resize
+    window.addEventListener('resize', setCanvas);
+
+    // Function that sets the height and width of the canvas
+    function setCanvas() {
+      // Set viewport variables
+      let viewportHeight = window.innerHeight;
+      let viewportWidth = window.innerWidth;
+    
+      // Set videoHeight variables
+      let videoHeight = Math.round(viewportWidth / 16 * 9);
+      let videoWidth = viewportWidth;
+    
+      // Set videoHeight and videoWidth if videoHeight <> viewportHeight
+      if (videoHeight < viewportHeight) {
+        videoHeight = viewportHeight;
+        videoWidth = Math.round(videoHeight / 9 * 16);
+      } else {
+        videoHeight = Math.round(viewportWidth / 16 * 9);
+        videoWidth = viewportWidth;
+      }
+
+      heroImg.style.height = videoHeight;
+      heroImg.style.width = videoWidth;
+    }
 
     /** START SECTION 2 */
 

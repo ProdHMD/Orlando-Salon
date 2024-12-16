@@ -36,6 +36,27 @@ body {
                             }
                         }
 
+                        .bookly-stepper {
+                            background: linear-gradient(180deg, $black 0.6667rem, $white 0.6667rem, $white 0.6667rem, $black 0.8889rem);
+
+                            li {
+                                outline: none;
+
+                                &::before {
+                                    background-color: $black;
+                                    border-color: $white;
+                                    border: 1px solid;
+                                    outline: none;
+                                }
+
+                                &.bookly-step-active {
+                                    &::before {
+                                        background-color: $white;
+                                    }
+                                }
+                            }
+                        }
+
                         label {
                             color: $white !important;
                         }
@@ -121,10 +142,21 @@ body {
                                 > span {
                                     color: $black !important;
                                 }
+
+                                @include media-breakpoint-down(md) {
+                                    padding: 1rem 2rem !important;
+                                }
                             }
 
                             .bookly-time-next {
-                                padding: 0 4rem !important; 
+                                padding: 0 4rem !important;
+                            }
+
+                            .bookly-time-prev,
+                            .bookly-time-next {
+                                @include media-breakpoint-down(md) {
+                                    padding: 0 1rem !important;
+                                }
                             }
                         }
                     }

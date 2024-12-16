@@ -34,7 +34,7 @@ if ( post_password_required() ) {
 echo '</div></div>';
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'row', $product ); ?>>
-  <div class="col-lg-12 ps-5 pe-5" id="page-header">
+  <div class="col-lg-12 ps-lg-5 pe-lg-5 ps-3 pe-3" id="page-header">
     <?php the_title( '<h1 class="product_title entry-title">', '</h1>' ); ?>
   </div>
 
@@ -48,7 +48,7 @@ echo '</div></div>';
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
 
-	<div class="summary entry-summary pe-5 d-flex flex-column">
+	<div class="summary entry-summary pe-lg-5 pe-3 d-flex flex-column">
     <div class="content-area">
       <?php the_content(); ?>
     </div>

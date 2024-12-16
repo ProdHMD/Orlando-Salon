@@ -22,7 +22,7 @@
             </div>
 
             <div class="background-block">
-                <img class="img-fluid background-img" src="<?php echo $bg['url'] ?>" alt="<?php echo $bg['alt'] ?>" width="<?php echo $bg['sizes']['2048x2048-width'] ?>" height="<?php echo $bg['sizes']['2048x2048-height'] ?>">
+                <img class="background-img" src="<?php echo $bg['url'] ?>" alt="<?php echo $bg['alt'] ?>" width="<?php echo $bg['sizes']['2048x2048-width'] ?>" height="<?php echo $bg['sizes']['2048x2048-height'] ?>">
             </div>
         <?php endwhile; ?>
     </div>
@@ -42,13 +42,13 @@
                                 <?php $imageColumns = array_chunk($images, 3); ?>
                                 <?php foreach($imageColumns as $image) : ?>
                                     <ul class="row list-unstyled parallax-images">
-                                        <li class="col-lg-5 parallax-image">
+                                        <li class="col-lg-5 col-5 parallax-image">
                                             <img class="img-fluid" src="<?php echo esc_url($image[0]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[0]['alt']); ?>">
                                         </li>
-                                        <li class="col-lg-5 parallax-image">
+                                        <li class="col-lg-5 col-5 parallax-image">
                                             <img class="img-fluid" src="<?php echo esc_url($image[1]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[1]['alt']); ?>">
                                         </li>
-                                        <li class="col-lg-5 parallax-image">
+                                        <li class="col-lg-5 col-5 parallax-image">
                                             <img class="img-fluid" src="<?php echo esc_url($image[2]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[2]['alt']); ?>">
                                         </li>
                                     </ul>
@@ -57,7 +57,7 @@
                         <?php endif; ?>
 
                         <?php if(have_rows('text_block')) : ?>
-                            <div class="col-lg-4 pe-5 d-flex flex-column justify-content-start" id="text-container">
+                            <div class="col-lg-4 pe-lg-5 d-flex flex-column justify-content-start" id="text-container">
                                 <?php while(have_rows('text_block')) : the_row(); ?>
                                     <div class="text-block d-flex flex-column justify-content-center">
                                         <h2><?php echo get_sub_field('heading'); ?></h2>

@@ -1,5 +1,5 @@
 <footer class="footer" id="footer">
-    <div class="container-fluid p-5">
+    <div class="container-fluid p-lg-5 p-4">
         <div class="row" id="top-content">
             <div class="col-lg-2" id="brand">
                 <img src="@asset('images/o1s-logo-footer.png')" alt="{!! $siteName !!}" class="img-fluid" width="253" height="218">
@@ -22,8 +22,8 @@
         <div class="row mt-5" id="bottom-content">
             <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-6" id="credits"><?php echo '©' . date('Y') . ' Orlando Salon. All rights reserved.'; ?></div>
-                    <div class="col-lg-6 text-end" id="to-top"><a href="#top" id="scroll-to-top">Back To Top<i class="fas fa-arrow-up"></i></a></div>
+                    <div class="col-lg-6 col-6" id="credits"><?php echo '©' . date('Y') . ' Orlando Salon. <br class="d-block d-lg-none">All rights reserved.'; ?></div>
+                    <div class="col-lg-6 col-6 text-end" id="to-top"><a href="#top" id="scroll-to-top">Back To Top<i class="fas fa-arrow-up"></i></a></div>
                 </div>
             </div>
         </div>

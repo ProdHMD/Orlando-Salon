@@ -4,8 +4,10 @@
       <img src="@asset('images/o1s-logo-header.png')" alt="{!! $siteName !!}" class="brand-img img-fluid" width="107" height="92">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-container" aria-controls="nav-container" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler hamburger hamburger--3dy" type="button" data-bs-toggle="collapse" data-bs-target="#nav-container" aria-controls="nav-container" aria-expanded="false" aria-label="Menu">
+      <span class="navbar-toggler-icon hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
     </button>
 
     @if (has_nav_menu('primary_navigation'))

@@ -9,6 +9,12 @@
             padding-right: 0;
         }
 
+        #brand {
+            @include media-breakpoint-down(md) {
+                text-align: center;
+            }
+        }
+
         /** Site map styles */
         #site-map {
             @include text_size_18;
@@ -81,6 +87,10 @@
     
             .text-2 {
                 margin-bottom: 3rem;
+
+                @include media-breakpoint-down(md) {
+                    margin-bottom: 1rem;
+                }
             }
 
             .text-3 {
@@ -132,6 +142,10 @@
             @include headings;
             
             letter-spacing: 0.125rem;
+
+            @include media-breakpoint-down(md) {
+                align-content: center;
+            }
 
             #scroll-to-top {
                 @include color-transition;

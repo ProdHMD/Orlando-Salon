@@ -3324,9 +3324,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001640, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001669":
-  version: 1.0.30001686
-  resolution: "caniuse-lite@npm:1.0.30001686"
-  checksum: 9c8a0ce38ec201d5d7039ebd6da548cbda19c67f1449e2a1dd831a9ff6f1f92048e2896899bbc07795b39cfbdc895225393d89e3af97874865f3a0ea9cf680a8
+  version: 1.0.30001688
+  resolution: "caniuse-lite@npm:1.0.30001688"
+  checksum: b48109e337f924a969ad3505d81cde32624b598f3ff67047dbd69a9bed59672cea37b6095c3a876174511447be5e356d87acac6c859d941572e57c220978e241
   languageName: node
   linkType: hard
 
@@ -5734,6 +5734,13 @@ __metadata:
   version: 3.12.5
   resolution: "gsap@npm:3.12.5"
   checksum: 60b99dc4482992ba86013963ee9a97a5ec62d480495dd85764788913245aa08cfd202c1df4bbc7592e43d5faa885127bec75f77266f2964fe3d3b559ab63f852
+  languageName: node
+  linkType: hard
+
+"hamburgers@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "hamburgers@npm:1.2.1"
+  checksum: f43d9f4309933e84b3ffe1c85d0e9fd858170339c9001f2481646547bdfa223ab44c8c2532802b8585c77738ef0271737db7d016dc134f9dcddc8fc72426a9f0
   languageName: node
   linkType: hard
 
@@ -10015,6 +10022,7 @@ __metadata:
     bootstrap: ^5.3.3
     greensock: ^1.20.2
     gsap: ^3.12.5
+    hamburgers: ^1.2.1
     lenis: ^1.1.16
   languageName: unknown
   linkType: soft
