@@ -4,13 +4,13 @@
         padding-left: 9rem;
         padding-right: 9rem;
 
-        @include media-breakpoint-down(ml) {
+        @include media-breakpoint-down(xl) {
             padding-left: 0;
             padding-right: 0;
         }
 
         #brand {
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(lg) {
                 text-align: center;
             }
         }
@@ -21,6 +21,30 @@
 
             @include media-breakpoint-up(xxxl) {
                 @include text_size_24;
+            }
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 1rem;
+            }
+
+            .menu-site-map-menu-container {
+                @include media-breakpoint-down(lg) {
+                    text-align: right;
+                }
+
+                @include media-breakpoint-down(md) {
+                    text-align: left;
+                }
+            }
+
+            #site-map-menu {
+                @include media-breakpoint-down(lg) {
+                    text-align: right !important;
+                }
+
+                @include media-breakpoint-down(md) {
+                    text-align: left !important;
+                }
             }
     
             #site-map-menu,
@@ -80,6 +104,14 @@
             @include media-breakpoint-up(xxxl) {
                 @include text_size_36;
             }
+
+            @include media-breakpoint-down(lg) {
+                text-align: center;
+            }
+
+            @include media-breakpoint-down(md) {
+                text-align: left;
+            }
     
             p {
                 line-height: normal;
@@ -88,7 +120,7 @@
             .text-2 {
                 margin-bottom: 3rem;
 
-                @include media-breakpoint-down(md) {
+                @include media-breakpoint-down(lg) {
                     margin-bottom: 1rem;
                 }
             }
@@ -143,7 +175,7 @@
             
             letter-spacing: 0.125rem;
 
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(lg) {
                 align-content: center;
             }
 

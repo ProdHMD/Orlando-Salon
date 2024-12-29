@@ -10,7 +10,7 @@ body {
                     visibility: hidden;
                     opacity: 0;
 
-                    @include media-breakpoint-down(md) {
+                    @include media-breakpoint-down(lg) {
                         visibility: visible;
                         opacity: 1;
                     }
@@ -44,7 +44,7 @@ body {
                                 max-width: 100%;
                             }
 
-                            @include media-breakpoint-down(md) {
+                            @include media-breakpoint-down(lg) {
                                 max-width: 100%;
                             }
                         }
@@ -90,7 +90,7 @@ body {
                             opacity: 0.5;
                             margin-top: -15vh;
 
-                            @include media-breakpoint-up(md) {
+                            @include media-breakpoint-up(xl) {
                                 max-width: 100%;
                                 height: auto;
                             }
@@ -121,6 +121,11 @@ body {
                                         margin-top: 0;
                                         margin-left: 0;
 
+                                        @include media-breakpoint-down(lg) {
+                                            margin-top: 0;
+                                            margin-left: 0;
+                                        }
+
                                         @include media-breakpoint-down(md) {
                                             margin-top: 5vh;
                                             margin-left: 1rem;
@@ -139,6 +144,11 @@ body {
                                         @include media-breakpoint-up(xxxl) {
                                             margin-top: 50vh;
                                             margin-left: -15vh;
+                                        }
+
+                                        @include media-breakpoint-down(lg) {
+                                            margin-top: 25vh;
+                                            margin-left: -7.5vh;
                                         }
                                         
                                         @include media-breakpoint-down(md) {
@@ -165,6 +175,11 @@ body {
                                             margin-left: -25vh;
                                         }
 
+                                        @include media-breakpoint-down(lg) {
+                                            margin-top: 2.5vh;
+                                            margin-left: -10.5vh;
+                                        }
+
                                         @include media-breakpoint-down(md) {
                                             margin-top: 2.5vh;
                                             margin-left: -10vh;
@@ -175,7 +190,7 @@ body {
                         }
 
                         #text-container {
-                            @include media-breakpoint-down(md) {
+                            @include media-breakpoint-down(lg) {
                                 margin-top: 3rem;
                                 padding-left: 2rem;
                                 padding-right: 2rem;
@@ -185,7 +200,7 @@ body {
                                 height: 100vh;
                                 opacity: 0;
 
-                                @include media-breakpoint-down(md) {
+                                @include media-breakpoint-down(lg) {
                                     height: auto;
                                 }
 
@@ -347,7 +362,7 @@ body {
                 #top-banner {
                     min-height: calc(100vh - 32px);
 
-                    @include media-breakpoint-down(wpmd) {
+                    @include media-breakpoint-down(wplg) {
                         min-height: calc(100vh - 46px);
                     }
                 }

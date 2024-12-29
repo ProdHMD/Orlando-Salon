@@ -21,6 +21,11 @@
         padding-left: 3rem;
         padding-right: 3rem;
 
+        @include media-breakpoint-down(xl) {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
         @include media-breakpoint-down(md) {
             padding-left: 1rem;
             padding-right: 1rem;
@@ -40,17 +45,21 @@
                 box-shadow: none;
                 outline: 0;
             }
+
+            .navbar-toggler-icon {
+                background: none;
+            }
         }
 
         #nav-container {
             @include headings;
 
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(lg) {
                 padding-top: 1rem;
             }
 
             .navbar-nav {
-                @include media-breakpoint-down(md) {
+                @include media-breakpoint-down(lg) {
                     flex-direction: row;
                     justify-content: center;
                     font-size: 1.1112rem;
@@ -68,7 +77,7 @@
                     &:nth-child(2) {
                         margin: 0 0.5rem;
 
-                        @include media-breakpoint-down(md) {
+                        @include media-breakpoint-down(lg) {
                             margin: 0;
                         }
                     }
@@ -77,7 +86,7 @@
                     &:nth-child(3) {
                         margin-left: 0.5rem;
 
-                        @include media-breakpoint-down(md) {
+                        @include media-breakpoint-down(xl) {
                             margin-left: 0;
                         }
                     }
@@ -87,7 +96,7 @@
                         a {
                             padding-right: 0;
 
-                            @include media-breakpoint-down(md) {
+                            @include media-breakpoint-down(lg) {
                                 padding-right: 0.5rem;
                             }
                         }
