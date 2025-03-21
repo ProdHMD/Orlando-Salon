@@ -33,37 +33,43 @@
         <div class="row" id="section-2">
             <?php while(have_rows('middle_section')) : the_row(); ?>
                 <div class="col-lg-12" id="main-content">
-                    <div class="row justify-content-evenly" id="scroll-container">
+                    <div class="row justify-content-center" id="scroll-container">
                         <?php 
                             $images = get_sub_field('floating_images');
-                            if($images) :
+                            if ($images) :
                         ?>
-                            <div class="col-lg-8 ps-0 d-flex flex-column justify-content-evenly" id="parallax-container">
-                                <?php $imageColumns = array_chunk($images, 3); ?>
-                                <?php foreach($imageColumns as $image) : ?>
-                                    <ul class="row list-unstyled parallax-images">
-                                        <li class="col-lg-5 col-5 parallax-image">
-                                            <img class="img-fluid" src="<?php echo esc_url($image[0]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[0]['alt']); ?>">
-                                        </li>
-                                        <li class="col-lg-5 col-5 parallax-image">
-                                            <img class="img-fluid" src="<?php echo esc_url($image[1]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[1]['alt']); ?>">
-                                        </li>
-                                        <li class="col-lg-5 col-5 parallax-image">
-                                            <img class="img-fluid" src="<?php echo esc_url($image[2]['sizes']['large']); ?>" alt="<?php echo esc_attr($image[2]['alt']); ?>">
-                                        </li>
-                                    </ul>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
+                            <div class="col-lg-12" id="parallax-container">
+                                <?php 
+                                    $imageColumns = array_chunk($images, 3);
+                                    foreach ($imageColumns as $index => $imageSet) :
+                                ?>
+                                    <div class="row" id="parallax-content-block" data-index="<?php echo $index + 1; ?>">
+                                        <div class="col-lg-8" id="parallax-image-container">
+                                            <ul class="row list-unstyled parallax-images">
+                                                <?php foreach ($imageSet as $image) : ?>
+                                                    <li class="col-lg-4 col-4 parallax-image">
+                                                        <img class="img-fluid" src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
 
-                        <?php if(have_rows('text_block')) : ?>
-                            <div class="col-lg-4 pe-lg-5 d-flex flex-column justify-content-start" id="text-container">
-                                <?php while(have_rows('text_block')) : the_row(); ?>
-                                    <div class="text-block d-flex flex-column justify-content-center">
-                                        <h2><?php echo get_sub_field('heading'); ?></h2>
-                                        <p><?php echo get_sub_field('content'); ?></p>
-                                    </div>    
-                                <?php endwhile; ?>
+                                        <div class="col-lg-4 d-flex justify-content-center" id="parallax-text-container">
+                                            <?php if (have_rows('text_block')) : ?>
+                                                <?php $i = 0; while (have_rows('text_block')) : the_row(); ?>
+                                                    <?php if ($i == $index) : ?>
+                                                        <div class="text-block d-flex flex-column justify-content-center" data-index="<?php echo $i + 1; ?>">
+                                                            <div class="content-block">
+                                                                <h2><?php echo get_sub_field('heading'); ?></h2>
+                                                                <p><?php echo get_sub_field('content'); ?></p>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php $i++; endwhile; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
                     </div>

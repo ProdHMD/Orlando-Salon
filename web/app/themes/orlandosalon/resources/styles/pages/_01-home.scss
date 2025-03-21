@@ -107,6 +107,7 @@ body {
                     padding-top: 3rem;
                     padding-bottom: 3rem;
                     min-height: 100%;
+                    overflow: hidden;
 
                     #main-content {
                         #parallax-container {
@@ -119,11 +120,9 @@ body {
 
                                     &:nth-child(3n+1) {
                                         margin-top: 0;
-                                        margin-left: 0;
 
                                         @include media-breakpoint-down(lg) {
                                             margin-top: 0;
-                                            margin-left: 0;
                                         }
 
                                         @include media-breakpoint-down(md) {
@@ -134,21 +133,20 @@ body {
 
                                     &:nth-child(3n+2) {
                                         margin-top: 40vh;
-                                        margin-left: -15vh;
 
                                         @include media-breakpoint-between(xxl, xxxl) {
-                                            margin-top: 50vh;
-                                            margin-left: -15vh;
+                                            margin-top: 40vh;
+                                            margin-left: -5vh;
                                         }
 
                                         @include media-breakpoint-up(xxxl) {
-                                            margin-top: 50vh;
-                                            margin-left: -15vh;
+                                            margin-top: 40vh;
+                                            margin-left: -5vh;
                                         }
 
                                         @include media-breakpoint-down(lg) {
                                             margin-top: 25vh;
-                                            margin-left: -7.5vh;
+                                            margin-left: -2.5vh;
                                         }
                                         
                                         @include media-breakpoint-down(md) {
@@ -157,27 +155,27 @@ body {
                                         }
 
                                         @include media-breakpoint-down(xsm) {
-                                            margin-left: -7.5vh;
+                                            margin-left: -2.5vh;
                                         }
                                     }
 
                                     &:nth-child(3n) {
                                         margin-top: 5vh;
-                                        margin-left: -15vh;
+                                        margin-left: -10vh;
 
                                         @include media-breakpoint-between(xxl, xxxl) {
                                             margin-top: 5vh;
-                                            margin-left: -25vh;
+                                            margin-left: -10vh;
                                         }
 
                                         @include media-breakpoint-up(xxxl) {
                                             margin-top: 5vh;
-                                            margin-left: -25vh;
+                                            margin-left: -10vh;
                                         }
 
                                         @include media-breakpoint-down(lg) {
                                             margin-top: 2.5vh;
-                                            margin-left: -10.5vh;
+                                            margin-left: -5vh;
                                         }
 
                                         @include media-breakpoint-down(md) {
@@ -198,7 +196,6 @@ body {
 
                             .text-block {
                                 height: 100vh;
-                                opacity: 0;
 
                                 @include media-breakpoint-down(lg) {
                                     height: auto;
@@ -362,7 +359,7 @@ body {
                 #top-banner {
                     min-height: calc(100vh - 32px);
 
-                    @include media-breakpoint-down(wplg) {
+                    @include media-breakpoint-down(wpmd) {
                         min-height: calc(100vh - 46px);
                     }
                 }

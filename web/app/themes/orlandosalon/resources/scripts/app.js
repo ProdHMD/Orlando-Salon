@@ -28,8 +28,8 @@ domReady(async () => {
 
   // Lenis init
   const lenis = new Lenis({
-    duration: 1.2,
-    lerp: 0.1,
+    duration: 1.75,
+    lerp: 0.05,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: 'vertical',
     smooth: true,
@@ -136,72 +136,87 @@ domReady(async () => {
 
     /** START SECTION 2 */
 
-    // Animate images with parallax effect
+    // Animate images with a stronger parallax effect (more movement)
     document.querySelectorAll('.parallax-image').forEach((image, index) => {
       gsap.to(image, {
-        y: (index % 3) * 50,
+        y: (index % 3) * 120,  // Increased parallax movement to 120
         scrollTrigger: {
           trigger: image,
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
-          markers: false,
         },
       });
     });
 
-    // Pinning the text boxes
-    gsap.utils.toArray('.text-block').forEach((textBlock, index) => {
-      ScrollTrigger.create({
-        trigger: textBlock,
-        start: () => 'top top',
-        end: () => `+50%`,
-        pin: true,
-        scrub: 1,
-        markers: false,
-      });
+    // ScrollTrigger for each #parallax-content-block using data-index
+    document.querySelectorAll('#parallax-content-block').forEach((contentBlock, index, blocks) => {
+      const dataIndex = contentBlock.getAttribute('data-index'); // Get the data-index attribute
 
+      // Track when the #parallax-content-block element becomes active
       ScrollTrigger.create({
-        trigger: `.parallax-images:nth-child(${index + 1})`,
-        start: 'top top',
-        end: 'bottom top',
+        trigger: contentBlock,
+        start: 'top center',  // Delay until the content block is in the middle of the viewport
+        end: 'bottom top',    // End the trigger when the content block reaches the top of the viewport
         onEnter: () => {
-          textBlock.classList.add('active');
+          // Slide in the associated text block when the content block is in view
+          const associatedTextBlock = document.querySelector(`.text-block[data-index="${dataIndex}"]`);
+          if (associatedTextBlock) {
+            gsap.to(associatedTextBlock.querySelector('.content-block'), {
+              opacity: 1,
+              x: '0%',  // Slide in to the original position
+              duration: 0.75,
+              ease: 'power2.out',
+              delay: 0.5,  // Delay more to trigger the animation after the content block is in the middle
+            });
+          }
         },
         onLeave: () => {
-          textBlock.classList.remove('active');
+          // Slide out the associated text block when the content block leaves the viewport
+          const associatedTextBlock = document.querySelector(`.text-block[data-index="${dataIndex}"]`);
+          if (associatedTextBlock) {
+            gsap.to(associatedTextBlock.querySelector('.content-block'), {
+              opacity: 0,
+              x: '100%',  // Slide out to the right
+              duration: 0.75,
+              ease: 'power2.in',
+            });
+          }
         },
         onEnterBack: () => {
-          textBlock.classList.add('active');
+          // Slide in the associated text block again when coming back into the viewport
+          const associatedTextBlock = document.querySelector(`.text-block[data-index="${dataIndex}"]`);
+          if (associatedTextBlock) {
+            gsap.to(associatedTextBlock.querySelector('.content-block'), {
+              opacity: 1,
+              x: '0%',  // Slide in to the original position
+              duration: 0.75,
+              ease: 'power2.out',
+              delay: 0.5,  // Delay to match the slide-in timing
+            });
+          }
         },
         onLeaveBack: () => {
-          textBlock.classList.remove('active');
+          // Slide out the associated text block when leaving back
+          const associatedTextBlock = document.querySelector(`.text-block[data-index="${dataIndex}"]`);
+          if (associatedTextBlock) {
+            gsap.to(associatedTextBlock.querySelector('.content-block'), {
+              opacity: 0,
+              x: '100%',  // Slide out to the right
+              duration: 0.75,
+              ease: 'power2.in',
+            });
+          }
         },
-        markers: false,
       });
     });
 
-    // Styling for active state of text box
-    document.querySelectorAll('.text-block').forEach(box => {
+    // Styling for initial state of text block (before the animation starts)
+    document.querySelectorAll('.text-block .content-block').forEach(box => {
       box.style.opacity = 0;
+      box.style.transform = 'translateX(100%)';  // Start from the right
     });
-
-    gsap.fromTo('.text-block', {
-      opacity: 1,
-    }, {
-      opacity: 1,
-      duration: 0.75,
-      ease: 'power2.out',
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.parallax-images',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-        markers: false,
-      },
-    }, '+=1');
-
+    
     /** START SECTION 3 */
 
     // Carousel init
