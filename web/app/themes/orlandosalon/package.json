@@ -28,19 +28,19 @@
     "@roots/bud-prettier": "6.24.0",
     "@roots/bud-sass": "6.24.0",
     "@roots/bud-stylelint": "6.24.0",
-    "@roots/eslint-config": "^6.23.3",
+    "@roots/eslint-config": "^6.24.0",
     "@roots/sage": "6.24.0"
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
-    "@fortawesome/fontawesome-svg-core": "^6.7.0",
-    "@fortawesome/free-brands-svg-icons": "^6.7.0",
-    "@fortawesome/free-solid-svg-icons": "^6.7.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "greensock": "^1.20.2",
-    "gsap": "^3.12.5",
+    "gsap": "^3.12.7",
     "hamburgers": "^1.2.1",
-    "lenis": "^1.1.16"
+    "lenis": "^1.2.3"
   }
 }

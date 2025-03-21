@@ -86,18 +86,24 @@ body {
                             background-position: -5px -5px;
                         }
                         
-                        .background-img {
+                        .background-img,
+                        .background-video {
                             opacity: 0.5;
-                            margin-top: -15vh;
+                            width: 125%;
+                            height: auto;
+                            margin-top: -5%;
+                            object-fit: cover;
 
-                            @include media-breakpoint-up(xl) {
-                                max-width: 100%;
-                                height: auto;
+                            @include media-breakpoint-down(xl) {
+                                width: 100%;
+                                height: 125%;
+                                margin-top: 0;
                             }
 
                             @include media-breakpoint-down(md) {
-                                margin-top: -45vh;
-                                margin-left: -50vh;
+                                width: 100%;
+                                height: 125%;
+                                margin-top: 0;
                             }
                         }
                     }
@@ -111,109 +117,121 @@ body {
 
                     #main-content {
                         #parallax-container {
-                            .parallax-images {
-                                position: relative;
-
-                                .parallax-image {
-                                    position: relative;
-                                    transform: translateY(0);
-
-                                    &:nth-child(3n+1) {
-                                        margin-top: 0;
-
-                                        @include media-breakpoint-down(lg) {
-                                            margin-top: 0;
-                                        }
-
-                                        @include media-breakpoint-down(md) {
-                                            margin-top: 5vh;
-                                            margin-left: 1rem;
-                                        }
-                                    }
-
-                                    &:nth-child(3n+2) {
-                                        margin-top: 40vh;
-
-                                        @include media-breakpoint-between(xxl, xxxl) {
-                                            margin-top: 40vh;
-                                            margin-left: -5vh;
-                                        }
-
-                                        @include media-breakpoint-up(xxxl) {
-                                            margin-top: 40vh;
-                                            margin-left: -5vh;
-                                        }
-
-                                        @include media-breakpoint-down(lg) {
-                                            margin-top: 25vh;
-                                            margin-left: -2.5vh;
-                                        }
-                                        
-                                        @include media-breakpoint-down(md) {
-                                            margin-top: 20vh;
-                                            margin-left: -5vh;
-                                        }
-
-                                        @include media-breakpoint-down(xsm) {
-                                            margin-left: -2.5vh;
-                                        }
-                                    }
-
-                                    &:nth-child(3n) {
-                                        margin-top: 5vh;
-                                        margin-left: -10vh;
-
-                                        @include media-breakpoint-between(xxl, xxxl) {
-                                            margin-top: 5vh;
-                                            margin-left: -10vh;
-                                        }
-
-                                        @include media-breakpoint-up(xxxl) {
-                                            margin-top: 5vh;
-                                            margin-left: -10vh;
-                                        }
-
-                                        @include media-breakpoint-down(lg) {
-                                            margin-top: 2.5vh;
-                                            margin-left: -5vh;
-                                        }
-
-                                        @include media-breakpoint-down(md) {
-                                            margin-top: 2.5vh;
-                                            margin-left: -10vh;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        #text-container {
-                            @include media-breakpoint-down(lg) {
-                                margin-top: 3rem;
-                                padding-left: 2rem;
-                                padding-right: 2rem;
-                            }
-
-                            .text-block {
-                                height: 100vh;
-
+                            #parallax-content-block {
                                 @include media-breakpoint-down(lg) {
-                                    height: auto;
+                                    margin-bottom: 3rem;
+                                }
+                                
+                                #parallax-image-container {
+                                    @include media-breakpoint-down(lg) {
+                                        margin-bottom: 3rem;
+                                    }
+                                    
+                                    .parallax-images {
+                                        position: relative;
+
+                                        .parallax-image {
+                                            position: relative;
+                                            transform: translateY(0);
+
+                                            &:nth-child(3n+1) {
+                                                margin-top: 0;
+
+                                                @include media-breakpoint-down(lg) {
+                                                    margin-top: 0;
+                                                }
+
+                                                @include media-breakpoint-down(md) {
+                                                    margin-top: 5vh;
+                                                    margin-left: 1rem;
+                                                }
+                                            }
+
+                                            &:nth-child(3n+2) {
+                                                margin-top: 40vh;
+
+                                                @include media-breakpoint-between(xxl, xxxl) {
+                                                    margin-top: 40vh;
+                                                    margin-left: -5vh;
+                                                }
+
+                                                @include media-breakpoint-up(xxxl) {
+                                                    margin-top: 40vh;
+                                                    margin-left: -5vh;
+                                                }
+
+                                                @include media-breakpoint-down(lg) {
+                                                    margin-top: 10vh;
+                                                    margin-left: -2.5vh;
+                                                }
+                                                
+                                                @include media-breakpoint-down(md) {
+                                                    margin-top: 10vh;
+                                                    margin-left: -5vh;
+                                                }
+
+                                                @include media-breakpoint-down(xsm) {
+                                                    margin-left: -2.5vh;
+                                                }
+                                            }
+
+                                            &:nth-child(3n) {
+                                                margin-top: 5vh;
+                                                margin-left: -10vh;
+
+                                                @include media-breakpoint-between(xxl, xxxl) {
+                                                    margin-top: 5vh;
+                                                    margin-left: -10vh;
+                                                }
+
+                                                @include media-breakpoint-up(xxxl) {
+                                                    margin-top: 5vh;
+                                                    margin-left: -10vh;
+                                                }
+
+                                                @include media-breakpoint-down(lg) {
+                                                    margin-top: -5vh;
+                                                    margin-left: -2.5vh;
+                                                }
+
+                                                @include media-breakpoint-down(md) {
+                                                    margin-top: -5vh;
+                                                    margin-left: -2.5vh;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
 
-                                h2 {
-                                    @include text_size_24;
-                                    @include headings;
-
-                                    letter-spacing: 0.85rem;
-                                    text-indent: -0.6rem;
-                                    direction: rtl;
-                                    text-align: left;
-                                    display: inline-block;
-                                    overflow: hidden;
-
-                                    @include media-breakpoint-up(xxxl) {
-                                        @include text_size_36;
+                                #parallax-text-container {
+                                    @include media-breakpoint-down(lg) {
+                                        margin-top: 6rem;
+                                        padding-left: 2rem;
+                                        padding-right: 2rem;
+                                    }
+        
+                                    .text-block {
+                                        height: 100vh;
+        
+                                        @include media-breakpoint-down(lg) {
+                                            height: auto;
+                                        }
+        
+                                        h2 {
+                                            @include text_size_24;
+                                            @include headings;
+        
+                                            letter-spacing: 0.85rem;
+                                            text-indent: -0.6rem;
+                                            direction: rtl;
+                                            text-align: left;
+                                            display: inline-block;
+                                            overflow: hidden;
+        
+                                            @include media-breakpoint-up(xxxl) {
+                                                @include text_size_36;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -252,6 +270,9 @@ body {
                                 }
 
                                 > div {
+                                    overflow: hidden;
+                                    max-height: 50vh;
+
                                     @include media-breakpoint-down(md) {
                                         display: none;
                                     }
@@ -260,6 +281,10 @@ body {
                                         @include media-breakpoint-down(md) {
                                             display: block;
                                         }
+                                    }
+
+                                    img {
+                                        max-height: 50vh;
                                     }
                                 }
 

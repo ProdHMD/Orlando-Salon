@@ -5,6 +5,7 @@
                 $img = get_sub_field('front_image');
                 $content = get_sub_field('content');
                 $bg = get_sub_field('background_image');
+                $video = get_sub_field('background_video');
             ?>
             <div class="container-fluid align-self-center z-1">
                 <div class="row mt-5">
@@ -22,7 +23,14 @@
             </div>
 
             <div class="background-block">
-                <img class="background-img" src="<?php echo $bg['url'] ?>" alt="<?php echo $bg['alt'] ?>" width="<?php echo $bg['sizes']['2048x2048-width'] ?>" height="<?php echo $bg['sizes']['2048x2048-height'] ?>">
+                <?php if ($video): ?>
+                    <video class="background-video" autoplay loop muted playsinline>
+                        <source src="<?php echo esc_url($video['url']); ?>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                <?php else: ?>
+                    <img class="background-img" src="<?php echo $bg['url'] ?>" alt="<?php echo $bg['alt'] ?>" width="<?php echo $bg['sizes']['2048x2048-width'] ?>" height="<?php echo $bg['sizes']['2048x2048-height'] ?>">
+                <?php endif; ?>
             </div>
         <?php endwhile; ?>
     </div>
