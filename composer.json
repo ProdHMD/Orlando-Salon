@@ -41,7 +41,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/gplvault",
-        "version": "5.0.1",
+        "version": "5.2.5",
         "type": "wordpress-plugin",
         "dist": {
           "url" : "gplv-plugins/gplvault-updater.zip",
@@ -53,7 +53,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/acfpro",
-        "version": "6.3.11",
+        "version": "6.4.0.1",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/advanced-custom-fields-pro.zip",
@@ -65,7 +65,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/bookly-pro",
-        "version": "8.5",
+        "version": "8.8",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/bookly-addon-pro.zip",
@@ -107,7 +107,8 @@
     "wpackagist-plugin/woocommerce-payments": "^9.1",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/classic-widgets": "^0.3.0",
-    "wpackagist-plugin/wordpress-importer": "^0.8.4"
+    "wpackagist-plugin/wordpress-importer": "^0.8.4",
+    "wpackagist-theme/twentytwentyfive": "^1.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7.1",
