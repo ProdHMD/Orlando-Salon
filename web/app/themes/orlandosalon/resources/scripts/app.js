@@ -7,8 +7,8 @@ import 'bootstrap';
 // Import FontAwesome
 import { library, dom, text } from '@fortawesome/fontawesome-svg-core';
 import { faMagnifyingGlass, faUser, faBagShopping, faArrowUp, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons';
-library.add(faMagnifyingGlass, faUser, faBagShopping, faArrowUp, faArrowLeft, faArrowRight, faInstagram, faFacebook, faTiktok);
+import { faInstagram, faFacebook, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+library.add(faMagnifyingGlass, faUser, faBagShopping, faArrowUp, faArrowLeft, faArrowRight, faInstagram, faFacebook, faTiktok, faXTwitter);
 dom.watch();
 
 // Import Fancybox
