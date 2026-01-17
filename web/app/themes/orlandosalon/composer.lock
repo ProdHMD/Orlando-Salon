@@ -4,8 +4,77 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8fb7181c59363e264a92e0c7c1c932f",
-    "packages": [],
+    "content-hash": "fa851baeebbea2a286ab679864a086a7",
+    "packages": [
+        {
+            "name": "log1x/sage-svg",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Log1x/sage-svg.git",
+                "reference": "c871fa875830b69ee751e97d1914a5c5458376d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/c871fa875830b69ee751e97d1914a5c5458376d2",
+                "reference": "c871fa875830b69ee751e97d1914a5c5458376d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.16",
+                "roots/acorn": "^4.3"
+            },
+            "type": "package",
+            "extra": {
+                "acorn": {
+                    "aliases": {
+                        "SageSvg": "Log1x\\SageSvg\\Facades\\SageSvg"
+                    },
+                    "providers": [
+                        "Log1x\\SageSvg\\SageSvgServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Log1x\\SageSvg\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Nifong",
+                    "email": "brandon@tendency.me"
+                }
+            ],
+            "description": "A simple package for using inline SVGs in Sage 10 projects.",
+            "keywords": [
+                "sage",
+                "svg",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/log1x/sage-svg/issues",
+                "source": "https://github.com/Log1x/sage-svg/tree/v2.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Log1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-29T14:11:41+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "laravel/pint",

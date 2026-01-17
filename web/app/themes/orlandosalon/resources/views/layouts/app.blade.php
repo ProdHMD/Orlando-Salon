@@ -12,6 +12,8 @@
 
     <div id="top"></div>
 
+    @include('sections.loader')
+
     <div id="app">
       <a class="sr-only focus:not-sr-only visually-hidden-focusable" href="#main">
         {{ __('Skip to content') }}

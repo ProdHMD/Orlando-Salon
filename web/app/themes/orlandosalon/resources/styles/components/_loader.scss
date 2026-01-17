@@ -1,0 +1,45 @@
+#site-preloader {
+  position: fixed;
+  inset: 0;
+  background: $black; /* change to your background */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .6s ease;
+}
+
+#site-preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loader-logo {
+  width: 480px;
+  height: auto;
+  position: relative;
+}
+
+/* Fill layer mask */
+.fill-layer {
+  background-color: $white;
+  transform: translateY(100%); /* start empty */
+  transition: transform 0.3s linear;
+  will-change: transform;
+
+  .cls-1 {
+    fill: $white;
+  }
+}
+
+#logo-clip {
+  .cls-1 {
+    fill: $white;
+  }
+}
+
+.outline-layer {
+  .cls-1 {
+    fill: none;
+  }
+}
