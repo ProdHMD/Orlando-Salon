@@ -100,14 +100,14 @@
     "wpackagist-plugin/gplvault": "^5.0",
     "wpackagist-plugin/bookly-pro": "^8.5",
     "wp-media/wp-rocket": "^3.15",
-    "wpackagist-plugin/bookly-responsive-appointment-booking-tool": "^24.4",
+    "wpackagist-plugin/bookly-responsive-appointment-booking-tool": "^26.3",
     "wpackagist-plugin/acfpro": "^6.3",
-    "wpackagist-plugin/woocommerce": "^9.4",
+    "wpackagist-plugin/woocommerce": "^10.4",
     "generoi/sage-woocommerce": "^1.1",
-    "wpackagist-plugin/woocommerce-payments": "^9.1",
+    "wpackagist-plugin/woocommerce-payments": "^10.4",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/classic-widgets": "^0.3.0",
-    "wpackagist-plugin/wordpress-importer": "^0.8.4",
+    "wpackagist-plugin/wordpress-importer": "^0.9.5",
     "wpackagist-theme/twentytwentyfive": "^1.2"
   },
   "require-dev": {

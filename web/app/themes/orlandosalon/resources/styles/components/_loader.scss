@@ -1,45 +1,50 @@
 #site-preloader {
   position: fixed;
   inset: 0;
-  background: $black; /* change to your background */
-  z-index: 9999;
+  background: $black;
+  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: opacity .6s ease;
-}
 
-#site-preloader.fade-out {
-  opacity: 0;
-  pointer-events: none;
+  &.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 #loader-logo {
-  width: 480px;
+  width: 350px;
   height: auto;
   position: relative;
-}
 
-/* Fill layer mask */
-.fill-layer {
-  background-color: $white;
-  transform: translateY(100%); /* start empty */
-  transition: transform 0.3s linear;
-  will-change: transform;
+  .fill-layer {
+    pointer-events: none;
 
-  .cls-1 {
-    fill: $white;
+    .cls-1 {
+      fill: $white;
+    }
   }
-}
 
-#logo-clip {
-  .cls-1 {
-    fill: $white;
+  .base-fill {
+    .base-rect {
+      fill: $link_grey;
+    }
   }
-}
 
-.outline-layer {
-  .cls-1 {
-    fill: none;
+  #wave {
+    fill: $white;
+    fill-opacity: 1;
+    opacity: 1;
+    filter: none;
+    mix-blend-mode: normal;
+  }
+
+  .outline-layer {
+    .cls-1 {
+      fill: none;
+      opacity: 1;
+    }
   }
 }
