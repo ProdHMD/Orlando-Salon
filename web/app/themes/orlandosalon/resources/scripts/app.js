@@ -67,48 +67,49 @@ domReady(async () => {
     document.addEventListener("DOMContentLoaded", () => {
       const loader = document.getElementById("site-preloader");
       const svg = document.querySelector("#loader-logo");
-      const fillLayer = svg.querySelector(".fill-layer");
+      const wave = svg.querySelector("#wave");
 
-      // Select ALL drawable shape types
-      const shapes = svg.querySelectorAll(
-        "path, polygon, polyline, rect, circle, ellipse, line"
-      );
+      const VIEWBOX_HEIGHT = 800;
+      const VIEWBOX_WIDTH = 750;
+      const AMPLITUDE = 14;
+      const TOP_OVERSHOOT = AMPLITUDE + 2;
 
-      // Optional: uniform stroke-draw reveal prepping
-      shapes.forEach(shape => {
-        const length = shape.getTotalLength ? shape.getTotalLength() : 0;
-
-        shape.style.strokeDasharray = length;
-        shape.style.strokeDashoffset = length;
-        shape.style.opacity = 1;
-        shape.style.transition = "stroke-dashoffset 1.2s ease-out";
-      });
-
-      // Fake loading duration (replace with real progress if available)
       let progress = 0;
-      const loadingInterval = setInterval(() => {
-        progress += 2; // speed of fill
+      let phase = 0;
 
-        // Fill mask grows upward
-        fillLayer.style.transform = `translateY(${100 - progress}%)`;
+      function buildWave(y, phase) {
+        const amplitude  = AMPLITUDE;
+        const wavelength = 180;
 
-        // Stroke reveal based on progress
-        shapes.forEach((shape, index) => {
-          const cutoff = (progress / 100) * shapes.length;
-          if (index < cutoff) {
-            shape.style.strokeDashoffset = 0;
-          }
-        });
-
-        if (progress >= 100) {
-          clearInterval(loadingInterval);
-          loader.classList.add("fade-out");
-
-          /*setTimeout(() => {
-            loader.remove();
-          }, 600);*/
+        let d = `M 0 ${y}`;
+        for (let x = 0; x <= VIEWBOX_WIDTH; x += 20) {
+          const waveY = y + Math.sin(((x + phase) / wavelength) * Math.PI * 2) * amplitude;
+          d += ` L ${x} ${waveY}`;
         }
-      }, 30);
+        d += ` V ${VIEWBOX_HEIGHT + 100} H 0 Z`;
+        return d;
+      }
+
+      function animate() {
+        progress += 0.35;
+        phase += 3;
+
+        // Normal fill Y
+        let fillY = VIEWBOX_HEIGHT - (VIEWBOX_HEIGHT * (progress / 100));
+
+        // Clamp to overshoot when near/at the end
+        if (progress >= 99.5) fillY = Math.max(-TOP_OVERSHOOT, fillY);
+
+        wave.setAttribute("d", buildWave(fillY, phase));
+
+        if (progress < 100.5) {
+          requestAnimationFrame(animate);
+        } else {
+          loader.classList.add('fade-out');
+        }
+      }
+
+      animate();
     });
   }
 

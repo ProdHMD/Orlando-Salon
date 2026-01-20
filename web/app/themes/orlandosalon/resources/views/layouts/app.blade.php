@@ -12,7 +12,9 @@
 
     <div id="top"></div>
 
-    @include('sections.loader')
+    @if (is_page('home'))
+      @include('sections.loader')
+    @endif
 
     <div id="app">
       <a class="sr-only focus:not-sr-only visually-hidden-focusable" href="#main">
