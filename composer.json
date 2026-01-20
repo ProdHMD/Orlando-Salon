@@ -41,7 +41,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/gplvault",
-        "version": "5.2.5",
+        "version": "5.3.3",
         "type": "wordpress-plugin",
         "dist": {
           "url" : "gplv-plugins/gplvault-updater.zip",
@@ -53,7 +53,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/acfpro",
-        "version": "6.4.0.1",
+        "version": "6.7.0.2",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/advanced-custom-fields-pro.zip",
@@ -65,7 +65,7 @@
       "type": "package",
       "package": {
         "name": "wpackagist-plugin/bookly-pro",
-        "version": "8.8",
+        "version": "9.6",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/bookly-addon-pro.zip",
@@ -76,8 +76,20 @@
     {
       "type": "package",
       "package": {
+        "name": "wpackagist-plugin/bookly-addon-advanced-google-calendar",
+        "version": "3.1",
+        "type": "wordpress-plugin",
+        "dist": {
+          "url": "gplv-plugins/bookly-addon-advanced-google-calendar.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
         "name": "wp-media/wp-rocket",
-        "version": "3.15.6",
+        "version": "3.20.3",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/wp-rocket.zip",
@@ -98,10 +110,11 @@
     "roots/wp-password-bcrypt": "1.1.0",
     "roots/acorn": "^4.3",
     "wpackagist-plugin/gplvault": "^5.0",
-    "wpackagist-plugin/bookly-pro": "^8.5",
+    "wpackagist-plugin/bookly-pro": "^9.0",
+    "wpackagist-plugin/bookly-addon-advanced-google-calendar": "^3.1",
     "wp-media/wp-rocket": "^3.15",
     "wpackagist-plugin/bookly-responsive-appointment-booking-tool": "^26.3",
-    "wpackagist-plugin/acfpro": "^6.3",
+    "wpackagist-plugin/acfpro": "^6.7",
     "wpackagist-plugin/woocommerce": "^10.4",
     "generoi/sage-woocommerce": "^1.1",
     "wpackagist-plugin/woocommerce-payments": "^10.4",

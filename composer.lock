@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddc542ad5d1730831e55a508bf51a055",
+    "content-hash": "6d50cf32ebed66c4016949dc2183d6ca",
     "packages": [
         {
             "name": "brick/math",
@@ -6460,7 +6460,7 @@
         },
         {
             "name": "wp-media/wp-rocket",
-            "version": "3.15.6",
+            "version": "3.20.3",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/wp-rocket.zip"
@@ -6469,7 +6469,7 @@
         },
         {
             "name": "wpackagist-plugin/acfpro",
-            "version": "6.4.0.1",
+            "version": "6.7.0.2",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/advanced-custom-fields-pro.zip"
@@ -6477,8 +6477,17 @@
             "type": "wordpress-plugin"
         },
         {
+            "name": "wpackagist-plugin/bookly-addon-advanced-google-calendar",
+            "version": "3.1",
+            "dist": {
+                "type": "zip",
+                "url": "gplv-plugins/bookly-addon-advanced-google-calendar.zip"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "wpackagist-plugin/bookly-pro",
-            "version": "8.8",
+            "version": "9.6",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/bookly-addon-pro.zip"
@@ -6487,15 +6496,15 @@
         },
         {
             "name": "wpackagist-plugin/bookly-responsive-appointment-booking-tool",
-            "version": "26.3",
+            "version": "26.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/bookly-responsive-appointment-booking-tool/",
-                "reference": "tags/26.3"
+                "reference": "tags/26.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/bookly-responsive-appointment-booking-tool.26.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/bookly-responsive-appointment-booking-tool.26.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6541,7 +6550,7 @@
         },
         {
             "name": "wpackagist-plugin/gplvault",
-            "version": "5.2.5",
+            "version": "5.3.3",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/gplvault-updater.zip"
