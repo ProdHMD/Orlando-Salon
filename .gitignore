@@ -31,5 +31,8 @@ wp-cli.local.yml
 public
 
 # Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/
 .github/instructions/*
 .vscode
+.vscode/*
+/.vscode/*
