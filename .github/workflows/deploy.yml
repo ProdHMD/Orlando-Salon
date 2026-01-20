@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - develop
+
   workflow_dispatch:
     inputs:
       app_env:
@@ -14,51 +15,56 @@ on:
         default: ""
 
 env:
-  # Only these need to exist as repo variables
   APP_NAME: ${{ vars.APP_NAME }}
   THEME_NAME: ${{ vars.THEME_NAME }}
 
 jobs:
+
+############################################################
+# 1. VALIDATE & DERIVE PATHS
+############################################################
   sanity-and-derive:
     name: Derive & Validate Environment
     runs-on: ubuntu-latest
     outputs:
-      app_env: ${{ steps.outvars.outputs.app_env }}
-      deploy_path: ${{ steps.outvars.outputs.deploy_path }}
-      theme_path: ${{ steps.outvars.outputs.theme_path }}
+      app_env: ${{ steps.v.outputs.app_env }}
+      deploy_path: ${{ steps.v.outputs.deploy_path }}
+      theme_local_path: ${{ steps.v.outputs.theme_local_path }}
+      theme_remote_path: ${{ steps.v.outputs.theme_remote_path }}
+
     steps:
-      - name: Compute APP_ENV from branch (with optional override)
-        id: outvars
+      - id: v
         run: |
           BRANCH="${GITHUB_REF##*/}"
           OVERRIDE="${{ github.event.inputs.app_env || vars.APP_ENV }}"
+
           if [ -n "$OVERRIDE" ]; then
             APP_ENV="$OVERRIDE"
           else
             case "$BRANCH" in
-              master)  APP_ENV="live" ;;
+              master) APP_ENV="live" ;;
               develop) APP_ENV="dev" ;;
-              *) echo "Unsupported branch: $BRANCH" >&2; exit 1 ;;
+              *) echo "::error ::Unsupported branch $BRANCH"; exit 1 ;;
             esac
           fi
 
-          if [ -z "${{ env.APP_NAME }}" ]; then
-            echo "Missing repo variable: APP_NAME" >&2
-            exit 1
-          fi
-          if [ -z "${{ env.THEME_NAME }}" ]; then
-            echo "Missing repo variable: THEME_NAME" >&2
+          if [ -z "${{ env.APP_NAME }}" ] || [ -z "${{ env.THEME_NAME }}" ]; then
+            echo "APP_NAME and THEME_NAME are required repo variables." >&2
             exit 1
           fi
 
           DEPLOY_PATH="/srv/users/serverpilot/apps/${APP_ENV}${{ env.APP_NAME }}"
-          THEME_PATH="web/app/themes/${{ env.THEME_NAME }}"
+          THEME_LOCAL="web/app/themes/${{ env.THEME_NAME }}"
+          THEME_REMOTE="$DEPLOY_PATH/web/app/themes/${{ env.THEME_NAME }}"
 
-          echo "Branch=$BRANCH  ;  APP_ENV=$APP_ENV"
-          echo "deploy_path=$DEPLOY_PATH" >> "$GITHUB_OUTPUT"
-          echo "theme_path=$THEME_PATH" >> "$GITHUB_OUTPUT"
-          echo "app_env=$APP_ENV" >> "$GITHUB_OUTPUT"
+          echo "app_env=$APP_ENV" >> $GITHUB_OUTPUT
+          echo "deploy_path=$DEPLOY_PATH" >> $GITHUB_OUTPUT
+          echo "theme_local_path=$THEME_LOCAL" >> $GITHUB_OUTPUT
+          echo "theme_remote_path=$THEME_REMOTE" >> $GITHUB_OUTPUT
 
+############################################################
+# 2. BUILD BEDROCK (COMPOSER)
+############################################################
   build-bedrock:
     name: Build Bedrock (Composer)
     needs: sanity-and-derive
@@ -67,35 +73,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP 8.4 + Composer v2
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: "8.4"
           tools: composer:v2
-          coverage: none
 
-      - name: Cache Composer (project)
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.composer/cache
             vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
+          key: composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install Bedrock Dependencies
-        run: |
-          composer --version
-          composer install --no-interaction --prefer-dist --no-dev
+      - run: composer install --no-interaction --prefer-dist
 
-      - name: Upload Bedrock Artifacts
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: bedrock-build
+          name: bedrock
           path: |
-            vendor/**
+            composer.json
+            composer.lock
+            vendor
             .env
-          if-no-files-found: ignore
 
+############################################################
+# 3. BUILD SAGE (NODE + COMPOSER + ARTIFACT STRUCTURE FIX)
+############################################################
   build-sage:
     name: Build Sage Assets (Node 20.20.0)
     needs: [sanity-and-derive, build-bedrock]
@@ -104,61 +107,54 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download Bedrock Artifacts
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: bedrock-build
+          name: bedrock
 
-      - name: Setup PHP 8.4 + Composer (for theme/acorn)
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: "8.4"
           tools: composer:v2
-          coverage: none
 
-      - name: Setup Node 20.20.0
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20.20.0'
-          cache: 'yarn'
-          cache-dependency-path: ${{ needs.sanity-and-derive.outputs.theme_path }}/yarn.lock
+          node-version: "20.20.0"
+          cache: yarn
+          cache-dependency-path: ${{ needs.sanity-and-derive.outputs.theme_local_path }}/yarn.lock
 
-      # 🔒 Enforce Yarn 4.12.0 (prevents fallback to classic Yarn 1.x)
-      - name: Use Yarn 4.12.0 via Corepack
-        run: |
+      - run: |
           corepack enable
           corepack prepare yarn@4.12.0 --activate
-          yarn --version
 
-      - name: Cache Composer (theme vendor)
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.composer/cache
-            ${{ needs.sanity-and-derive.outputs.theme_path }}/vendor
-          key: composer-theme-${{ hashFiles(format('{0}/composer.lock', needs.sanity-and-derive.outputs.theme_path)) }}
+            ${{ needs.sanity-and-derive.outputs.theme_local_path }}/vendor
+          key: composer-theme-${{ hashFiles(format('{0}/composer.lock', needs.sanity-and-derive.outputs.theme_local_path)) }}
 
-      - name: Install Theme Dependencies + Build
-        working-directory: ${{ needs.sanity-and-derive.outputs.theme_path }}
+      - name: Build Sage
+        working-directory: ${{ needs.sanity-and-derive.outputs.theme_local_path }}
+        env:
+          NODE_ENV: production
         run: |
-          # Composer for Sage (Acorn, etc.)
-          if [ -f composer.json ]; then
-            composer install --no-interaction --prefer-dist --no-dev
-          fi
+          composer install --prefer-dist --no-interaction || true
           yarn install --immutable || yarn install
-          yarn build
+          yarn build --mode=production
 
-      - name: Upload Sage Artifacts
-        uses: actions/upload-artifact@v4
+      # Correct artifact upload preserving directory structure
+      - uses: actions/upload-artifact@v4
         with:
-          name: sage-build
+          name: sage
           path: |
-            ${{ needs.sanity-and-derive.outputs.theme_path }}/public/**
-            ${{ needs.sanity-and-derive.outputs.theme_path }}/vendor/**
-            ${{ needs.sanity-and-derive.outputs.theme_path }}/node_modules/**
-            ${{ needs.sanity-and-derive.outputs.theme_path }}/.yarn/**
-          if-no-files-found: ignore
+            web/app/themes/${{ env.THEME_NAME }}/public
+            web/app/themes/${{ env.THEME_NAME }}/vendor
+            web/app/themes/${{ env.THEME_NAME }}/node_modules
+            web/app/themes/${{ env.THEME_NAME }}/.yarn
 
+############################################################
+# 4. DEPLOY (SAFE RSYNC + CORRECTED ARTIFACT PATHS)
+############################################################
   deploy:
     name: Deploy via SSH + rsync
     needs: [sanity-and-derive, build-sage]
@@ -167,33 +163,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download Bedrock Artifacts
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: bedrock-build
-
-      - name: Download Sage Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: sage-build
+          name: bedrock
           path: .
 
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: sage
+          path: web/app/themes/${{ env.THEME_NAME }}
+
+      - name: Validate Dotenv exists
+        run: |
+          if [ ! -f vendor/vlucas/phpdotenv/src/Dotenv.php ]; then
+            echo "::error ::Dotenv is NOT in vendor/"
+            exit 1
+          fi
+
+      - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add server to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H "${{ secrets.SERVER_IP }}" >> ~/.ssh/known_hosts
+      - run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      # ✅ Option 1: STRICT SKIP if dev path doesn't exist
+      ############################################################
+      # CHECK DEV PATH
+      ############################################################
       - name: Check/flag dev path existence
         id: devpath
         if: needs.sanity-and-derive.outputs.app_env == 'dev'
         run: |
-          if ssh serverpilot@${{ secrets.SERVER_IP }} "test -d '${{ needs.sanity-and-derive.outputs.deploy_path }}'"; then
+          if ssh -o BatchMode=yes -o ConnectTimeout=10 serverpilot@${{ secrets.SERVER_IP }} "test -d '${{ needs.sanity-and-derive.outputs.deploy_path }}'"; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
@@ -202,35 +202,40 @@ jobs:
       - name: Skip deploy if dev path missing
         if: needs.sanity-and-derive.outputs.app_env == 'dev' && steps.devpath.outputs.exists != 'true'
         run: |
-          echo "Dev path ${{ needs.sanity-and-derive.outputs.deploy_path }} does not exist. Skipping deployment."
+          echo "Dev path missing. Skipping."
           exit 0
 
-      - name: Rsync Bedrock & Theme to Server
+      ############################################################
+      # RSYNC (RUN ONLY IF LIVE OR DEV WITH PATH)
+      ############################################################
+      - name: Deploy via rsync
         if: needs.sanity-and-derive.outputs.app_env == 'live' || steps.devpath.outputs.exists == 'true'
         run: |
-          set -e
-          REMOTE="serverpilot@${{ secrets.SERVER_IP }}:${{ needs.sanity-and-derive.outputs.deploy_path }}"
+          REMOTE="serverpilot@${{ secrets.SERVER_IP }}"
+          BASE="${{ needs.sanity-and-derive.outputs.deploy_path }}"
+          THEME="$BASE/web/app/themes/${{ env.THEME_NAME }}"
+          SRC_THEME="web/app/themes/${{ env.THEME_NAME }}"
 
-          # Sync Bedrock vendor and .env
-          rsync -az --delete vendor/ "$REMOTE/vendor/"
-          [ -f ".env" ] && rsync -az .env "$REMOTE/.env" || true
+          rsync -az composer.json composer.lock "$REMOTE:$BASE/"
+          rsync -az --delete vendor/ "$REMOTE:$BASE/vendor/"
+          [ -f ".env" ] && rsync -az .env "$REMOTE:$BASE/.env"
 
-          # Sync theme artifacts
-          THEME_DIR="${{ needs.sanity-and-derive.outputs.theme_path }}"
-          rsync -az --delete "$THEME_DIR/public/" "$REMOTE/$THEME_DIR/public/"
-          if [ -d "$THEME_DIR/vendor" ]; then rsync -az --delete "$THEME_DIR/vendor/" "$REMOTE/$THEME_DIR/vendor/"; fi
-          if [ -d "$THEME_DIR/node_modules" ]; then rsync -az --delete "$THEME_DIR/node_modules/" "$REMOTE/$THEME_DIR/node_modules/"; fi
-          if [ -d "$THEME_DIR/.yarn" ]; then rsync -az --delete "$THEME_DIR/.yarn/" "$REMOTE/$THEME_DIR/.yarn/"; fi
+          rsync -az --delete "$SRC_THEME/public/" "$REMOTE:$THEME/public/"
+          rsync -az --delete "$SRC_THEME/vendor/" "$REMOTE:$THEME/vendor/"
+          rsync -az --delete "$SRC_THEME/node_modules/" "$REMOTE:$THEME/node_modules/" || true
+          rsync -az --delete "$SRC_THEME/.yarn/" "$REMOTE:$THEME/.yarn/" || true
 
-      - name: Post-deploy tasks (Acorn optimize, perms)
+      ############################################################
+      # FINALIZE — SAME CONDITION AS RSYNC
+      ############################################################
+      - name: Finalize
         if: needs.sanity-and-derive.outputs.app_env == 'live' || steps.devpath.outputs.exists == 'true'
         run: |
           ssh serverpilot@${{ secrets.SERVER_IP }} bash -lc "
-            set -e
             cd '${{ needs.sanity-and-derive.outputs.deploy_path }}'
             wp acorn optimize || true
             chown -R serverpilot:serverpilot .
-            find . -type d -exec chmod 0775 {} \;
-            find . -type f -exec chmod 0664 {} \;
-            echo 'Deployment completed.'
+            find . -type d -exec chmod 775 {} \;
+            find . -type f -exec chmod 664 {} \;
+            echo 'Deployment complete.'
           "
