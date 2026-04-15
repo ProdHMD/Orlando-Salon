@@ -42,5 +42,6 @@
     "gsap": "^3.12.7",
     "hamburgers": "^1.2.1",
     "lenis": "^1.2.3"
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }

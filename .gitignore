@@ -22,8 +22,13 @@ web/.htaccess
 
 # Composer
 vendor
-.yarn
 .yarn/*
+.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 
 # WP-CLI
 wp-cli.local.yml
