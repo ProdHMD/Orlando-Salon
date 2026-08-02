@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "585a9979e25290cd3fc8c1528a9a9c97",
+    "content-hash": "504fe366303927e63864db269b5fc3a8",
     "packages": [
         {
             "name": "brick/math",
@@ -4360,6 +4360,15 @@
             ],
             "abandoned": "roots/wp-password-bcrypt",
             "time": "2021-10-31T01:18:58+00:00"
+        },
+        {
+            "name": "smash-balloon/instagram-feed-pro",
+            "version": "6.11.4",
+            "dist": {
+                "type": "zip",
+                "url": "gplv-plugins/instagram-feed-pro.zip"
+            },
+            "type": "wordpress-plugin"
         },
         {
             "name": "symfony/console",

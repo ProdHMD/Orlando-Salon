@@ -233,6 +233,9 @@ jobs:
           # Deploy exactly what's tracked in git (honors root + theme .gitignore)
           git ls-files -z \
             | rsync -azv --delete --from0 --files-from=- \
+                --filter='protect /wordfence-waf.php' \
+                --filter='protect /.user.ini' \
+                --filter='protect /web/.user.ini' \
                 --exclude 'vendor' \
                 --exclude '.env' \
                 --exclude 'web/wp' \
@@ -342,6 +345,32 @@ jobs:
           '
 
       ############################################################
+      # CLEAR WP ROCKET CACHE (LIVE / MASTER ONLY)
+      ############################################################
+      - name: Clear WP Rocket cache on live site
+        if: needs.sanity-and-derive.outputs.app_env == 'live'
+        run: |
+          ssh serverpilot@${{ secrets.SERVER_IP }} bash -lc '
+            set -euo pipefail
+            BASE="${{ needs.sanity-and-derive.outputs.deploy_path }}"
+            cd "$BASE"
+
+            if ! wp plugin is-active wp-rocket >/dev/null 2>&1; then
+              echo "WP Rocket is not active; skipping cache clear."
+              exit 0
+            fi
+
+            if wp help rocket clean >/dev/null 2>&1; then
+              echo "Clearing WP Rocket cache…"
+              wp rocket clean --confirm
+              echo "WP Rocket cache cleared."
+            else
+              echo "WP Rocket CLI command is unavailable; clearing through rocket_clean_domain()."
+              wp eval "if ( function_exists( \"rocket_clean_domain\" ) ) { rocket_clean_domain(); echo \"WP Rocket cache cleared.\\n\"; } else { fwrite( STDERR, \"WP Rocket cache API is unavailable.\\n\" ); exit( 1 ); }"
+            fi
+          '
+
+      ############################################################
       # FINALIZE — PERMISSIONS, DONE
       ############################################################
       - name: Finalize
@@ -378,6 +407,12 @@ jobs:
           BLADE_ICONS=$(ssh "$REMOTE" "test -d '$BASE/vendor/blade-ui-kit/blade-icons' && echo yes || echo no")
           ICONS_DIR_EXISTS=$(ssh "$REMOTE" "test -d '$ICONS_DIR' && echo yes || echo no")
           FALLBACK_USED=$(ssh "$REMOTE" "test -f '$BASE/composer_fallback.env' && grep -q 'FALLBACK_FULL_INSTALL=1' '$BASE/composer_fallback.env' && echo yes || echo no")
+          WAF_FILE=$(ssh "$REMOTE" "test -f '$BASE/wordfence-waf.php' && echo preserved || echo not-present")
+          if [ "$APP_ENV" = "live" ]; then
+            WP_ROCKET_ACTIVE=$(ssh "$REMOTE" "cd '$BASE' && wp plugin is-active wp-rocket >/dev/null 2>&1 && echo yes || echo no")
+          else
+            WP_ROCKET_ACTIVE="not-run-on-dev"
+          fi
 
           {
             echo "### Deploy Summary"
@@ -389,6 +424,8 @@ jobs:
             echo "- **Bedrock vendor contains** \`blade-ui-kit/blade-icons\`: ${BLADE_ICONS}"
             echo "- **Theme icons dir exists**: ${ICONS_DIR_EXISTS}"
             echo "- **Composer fallback (full install) used**: ${FALLBACK_USED}"
+            echo "- **Wordfence WAF bootstrap**: ${WAF_FILE}"
+            echo "- **WP Rocket active / cache-clear target**: ${WP_ROCKET_ACTIVE}"
             echo ""
             echo "_Note: \`icons:cache\` runs only when Blade Icons are detected in composer.json._"
           } >> "$GITHUB_STEP_SUMMARY"
