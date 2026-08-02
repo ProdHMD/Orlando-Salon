@@ -96,6 +96,18 @@
           "type": "zip"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "smash-balloon/instagram-feed-pro",
+        "version": "6.11.4",
+        "type": "wordpress-plugin",
+        "dist": {
+          "url": "gplv-plugins/instagram-feed-pro.zip",
+          "type": "zip"
+        }
+      }
     }
   ],
   "require": {
@@ -121,7 +133,8 @@
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/classic-widgets": "^0.3.0",
     "wpackagist-plugin/wordpress-importer": "^0.9.5",
-    "wpackagist-theme/twentytwentyfive": "^1.2"
+    "wpackagist-theme/twentytwentyfive": "^1.2",
+    "smash-balloon/instagram-feed-pro": "^6.11"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7.1",
