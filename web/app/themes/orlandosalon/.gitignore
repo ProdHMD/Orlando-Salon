@@ -5,3 +5,15 @@
 .budfiles
 npm-debug.log
 yarn-error.log
+
+# Ignore the core cache and build metadata
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Always ignore the heavy package cache logs
+.yarn/cache
+
