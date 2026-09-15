@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fad88f9d9fd544ee05c4f3bd52901e5",
+    "content-hash": "d7ef853715ff6eb271575525a7bc041c",
     "packages": [
         {
             "name": "brick/math",
@@ -6633,6 +6633,24 @@
                 "url": "gplv-plugins/gplvault-updater.zip"
             },
             "type": "wordpress-plugin"
+        },
+        {
+            "name": "wpackagist-plugin/jetpack",
+            "version": "16.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/jetpack/",
+                "reference": "tags/16.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.16.2.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/jetpack/"
         },
         {
             "name": "wpackagist-plugin/woocommerce",
