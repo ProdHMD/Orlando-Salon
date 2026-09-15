@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8bc3406e3aafbd82e602b0aba7133bc",
+    "content-hash": "c0f39571a9d491eba96a50a205dbd303",
     "packages": [
         {
             "name": "brick/math",
@@ -4365,7 +4365,7 @@
         },
         {
             "name": "smash-balloon/instagram-feed-pro",
-            "version": "6.11.4",
+            "version": "6.13.0",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/instagram-feed-pro.zip"
@@ -6483,7 +6483,7 @@
         },
         {
             "name": "wp-media/wp-rocket",
-            "version": "3.20.3",
+            "version": "3.23.3.3",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/wp-rocket.zip"
@@ -6492,12 +6492,48 @@
         },
         {
             "name": "wpackagist-plugin/acfpro",
-            "version": "6.7.0.2",
+            "version": "6.8.10",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/advanced-custom-fields-pro.zip"
             },
             "type": "wordpress-plugin"
+        },
+        {
+            "name": "wpackagist-plugin/akismet",
+            "version": "5.7.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/akismet/",
+                "reference": "tags/5.7.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/akismet.5.7.2.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/akismet/"
+        },
+        {
+            "name": "wpackagist-plugin/all-in-one-wp-migration",
+            "version": "7.110",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
+                "reference": "tags/7.110"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.110.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/all-in-one-wp-migration/"
         },
         {
             "name": "wpackagist-plugin/bookly-addon-advanced-google-calendar",
@@ -6510,7 +6546,7 @@
         },
         {
             "name": "wpackagist-plugin/bookly-pro",
-            "version": "9.6",
+            "version": "10.4",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/bookly-addon-pro.zip"
@@ -6534,6 +6570,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/bookly-responsive-appointment-booking-tool/"
+        },
+        {
+            "name": "wpackagist-plugin/bye-felicia",
+            "version": "1.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/bye-felicia/",
+                "reference": "tags/1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/bye-felicia.1.3.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/bye-felicia/"
         },
         {
             "name": "wpackagist-plugin/classic-editor",
@@ -6573,7 +6627,7 @@
         },
         {
             "name": "wpackagist-plugin/gplvault",
-            "version": "5.3.3",
+            "version": "5.3.9",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/gplvault-updater.zip"
@@ -6617,6 +6671,24 @@
             "homepage": "https://wordpress.org/plugins/woocommerce-payments/"
         },
         {
+            "name": "wpackagist-plugin/wordfence",
+            "version": "9.0.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordfence/",
+                "reference": "tags/9.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordfence.9.0.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordfence/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-importer",
             "version": "0.9.6",
             "source": {
@@ -6633,6 +6705,42 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-importer/"
+        },
+        {
+            "name": "wpackagist-plugin/worker",
+            "version": "4.9.38",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/worker/",
+                "reference": "tags/4.9.38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/worker.4.9.38.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/worker/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-mail-smtp",
+            "version": "4.9.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-mail-smtp/",
+                "reference": "tags/4.9.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.4.9.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-mail-smtp/"
         },
         {
             "name": "wpackagist-theme/twentytwentyfive",
