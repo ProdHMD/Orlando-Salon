@@ -230,12 +230,28 @@ jobs:
           BASE="${{ needs.sanity-and-derive.outputs.deploy_path }}"
           ssh "$REMOTE" "mkdir -p '$BASE'"
 
-          # Deploy exactly what's tracked in git (honors root + theme .gitignore)
+          # Preserve server-generated Wordfence WAF files outside the rsync tree.
+          # This is deterministic and does not rely on rsync protect-filter matching.
+          BACKUP_DIR="/tmp/wordfence-waf-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          ssh "$REMOTE" "set -e
+            rm -rf '$BACKUP_DIR'
+            mkdir -p '$BACKUP_DIR'
+            if [ -f '$BASE/wordfence-waf.php' ]; then
+              mv '$BASE/wordfence-waf.php' '$BACKUP_DIR/wordfence-waf.php'
+            fi
+            if [ -f '$BASE/.user.ini' ]; then
+              mv '$BASE/.user.ini' '$BACKUP_DIR/root.user.ini'
+            fi
+            if [ -f '$BASE/web/.user.ini' ]; then
+              mv '$BASE/web/.user.ini' '$BACKUP_DIR/web.user.ini'
+            fi
+          "
+
+          # Deploy exactly what's tracked in git (honors root + theme .gitignore).
+          # Capture rsync's status so Wordfence files are restored even if rsync fails.
+          set +e
           git ls-files -z \
             | rsync -azv --delete --from0 --files-from=- \
-                --filter='protect /wordfence-waf.php' \
-                --filter='protect /.user.ini' \
-                --filter='protect /web/.user.ini' \
                 --exclude 'vendor' \
                 --exclude '.env' \
                 --exclude 'web/wp' \
@@ -245,6 +261,28 @@ jobs:
                 --exclude "web/app/themes/${{ env.THEME_NAME }}/node_modules" \
                 --exclude "web/app/themes/${{ env.THEME_NAME }}/.yarn" \
                 ./ "$REMOTE:$BASE/"
+          RSYNC_STATUS=$?
+          set -e
+
+          # Always restore the server-generated Wordfence files after rsync.
+          ssh "$REMOTE" "set -e
+            if [ -f '$BACKUP_DIR/wordfence-waf.php' ]; then
+              mv '$BACKUP_DIR/wordfence-waf.php' '$BASE/wordfence-waf.php'
+            fi
+            if [ -f '$BACKUP_DIR/root.user.ini' ]; then
+              mv '$BACKUP_DIR/root.user.ini' '$BASE/.user.ini'
+            fi
+            if [ -f '$BACKUP_DIR/web.user.ini' ]; then
+              mkdir -p '$BASE/web'
+              mv '$BACKUP_DIR/web.user.ini' '$BASE/web/.user.ini'
+            fi
+            rmdir '$BACKUP_DIR' 2>/dev/null || true
+          "
+
+          if [ "$RSYNC_STATUS" -ne 0 ]; then
+            echo "::error ::rsync failed with status $RSYNC_STATUS; Wordfence files were restored."
+            exit "$RSYNC_STATUS"
+          fi
 
       - name: Deploy theme builds (public/vendor/node_modules/.yarn)
         if: needs.sanity-and-derive.outputs.app_env == 'live' || steps.devpath.outputs.exists == 'true'
@@ -286,6 +324,9 @@ jobs:
               rm -f composer-setup.php
               COMPOSER="$HOME/bin/composer"
             fi
+
+            echo "Clearing Composer cache before deployment…"
+            $COMPOSER clear-cache
 
             echo "Running composer install --no-dev (first pass)…"
             $COMPOSER install --no-dev --prefer-dist --no-interaction
