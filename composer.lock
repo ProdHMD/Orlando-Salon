@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7ef853715ff6eb271575525a7bc041c",
+    "content-hash": "cb57a4869f928417a8114d82627ccf12",
     "packages": [
         {
             "name": "brick/math",
@@ -6545,7 +6545,7 @@
             "type": "wordpress-plugin"
         },
         {
-            "name": "wpackagist-plugin/bookly-pro",
+            "name": "wpackagist-plugin/bookly-addon-pro",
             "version": "10.4",
             "dist": {
                 "type": "zip",

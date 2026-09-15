@@ -64,7 +64,7 @@
     {
       "type": "package",
       "package": {
-        "name": "wpackagist-plugin/bookly-pro",
+        "name": "wpackagist-plugin/bookly-addon-pro",
         "version": "10.4",
         "type": "wordpress-plugin",
         "dist": {
@@ -122,7 +122,7 @@
     "roots/wp-password-bcrypt": "1.1.0",
     "roots/acorn": "^4.3",
     "wpackagist-plugin/gplvault-updater": "^5.0",
-    "wpackagist-plugin/bookly-pro": "^10.0",
+    "wpackagist-plugin/bookly-addon-pro": "^10.0",
     "wpackagist-plugin/bookly-addon-advanced-google-calendar": "^3.1",
     "wp-media/wp-rocket": "^3.15",
     "wpackagist-plugin/bookly-responsive-appointment-booking-tool": "^28.0",
