@@ -4,15 +4,14 @@
     "@roots/sage/config/jsconfig.json"
   ],
   "compilerOptions": {
-    "baseUrl": "resources",
     /**
      * Resolve aliases
      */
     "paths": {
-      "@fonts/*": ["fonts/*"],
-      "@images/*": ["images/*"],
-      "@scripts/*": ["scripts/*"],
-      "@styles/*": ["styles/*"]
+      "@fonts/*": ["./resources/fonts/*"],
+      "@images/*": ["./resources/images/*"],
+      "@scripts/*": ["./resources/scripts/*"],
+      "@styles/*": ["./resources/styles/*"]
     },
     /**
      * Type definitions

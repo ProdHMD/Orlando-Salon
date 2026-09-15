@@ -808,44 +808,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fancyapps/ui@npm:^5.0.36":
-  version: 5.0.36
-  resolution: "@fancyapps/ui@npm:5.0.36"
-  checksum: 10/d66d0ad3fd9f6e33efa3515edcb355111d41506094e771cff8d30e8a0bb92fe8ee718fdce52bd51ed42fca2c2ae5a202ca7a8cb2e564bd6e28e1d21d27edd07e
+"@fancyapps/ui@npm:^6.1.15":
+  version: 6.1.15
+  resolution: "@fancyapps/ui@npm:6.1.15"
+  checksum: 10/ab43e285498ffc7cc80aea188c24bd5813ebae8584808c8589f17726b8b3bf687f5eb25fc6cb54ee4d4f605ca454fbf72b86a3d15d88823d937eaebd0577c2dc
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:6.7.2":
-  version: 6.7.2
-  resolution: "@fortawesome/fontawesome-common-types@npm:6.7.2"
-  checksum: 10/3c2e938afe6f5939bd63181faaec7b062902d9ed970c75d6becb1fd8e5ca0ed937e7d1513bd7ae545da407d0682039e50730cdb3136b58656128838ea2c58ac0
+"@fortawesome/fontawesome-common-types@npm:7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/fontawesome-common-types@npm:7.3.1"
+  checksum: 10/95f48fd99fd3d7806b6786213196f6629cf9562cd6d92c6560df6182a82c91bbcee15c4a51776b85bb675a2170c03d98fc59f213be98171ac1981ed9b54d8965
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^6.7.2":
-  version: 6.7.2
-  resolution: "@fortawesome/fontawesome-svg-core@npm:6.7.2"
+"@fortawesome/fontawesome-svg-core@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/fontawesome-svg-core@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:6.7.2"
-  checksum: 10/a3767631329aaa8c1bfafc9470718628533ceb42365774cd0c121477e0f3125f3cce4c2447058deee2874829ce11aa7a3fe183b0000bad81cf5ed0449c8470ef
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10/cb79848909fd7dfc55785090fb798055fc3ef42fd04ef66660050f07bcd2d4448e64fd7f315198757dba41d84213e728cab28bb85ff7766829a6f5951044fd3b
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^6.7.2":
-  version: 6.7.2
-  resolution: "@fortawesome/free-brands-svg-icons@npm:6.7.2"
+"@fortawesome/free-brands-svg-icons@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/free-brands-svg-icons@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:6.7.2"
-  checksum: 10/7dcbb389ccfee519d4639b992e65180ee4665bc0627e608a5d756c78acd50414f9a8d4a21a27e38f845c89cca33eb23bb468fb050c7764504659581e35e78b48
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10/d1c3641f09924a29e827c7afedc849c85733f629e9f039bf9680d9f4dce84f40d14a5ff13f801ce16bff3cebd71b799e71cd4de96f97769b30a538c69e088eae
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:^6.7.2":
-  version: 6.7.2
-  resolution: "@fortawesome/free-solid-svg-icons@npm:6.7.2"
+"@fortawesome/free-solid-svg-icons@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/free-solid-svg-icons@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:6.7.2"
-  checksum: 10/efcd90cd5d333995ff4012a9d77a8b23523e246fa418524edf08bb6af8b14db2ee0b08ee5f7460a86474d352af06e1a2581cc827ee3706e9c0e92e178b50e27f
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10/5d827a943f4e18aaf3bf3ae328d6c0f600a4869f6d30c33210be3646312612c1d81cb6a945d7ba0fe69e39b31e68633013cfea63dea91dd0ab304b55e9fcd593
   languageName: node
   linkType: hard
 
@@ -3172,12 +3172,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.3.3":
-  version: 5.3.3
-  resolution: "bootstrap@npm:5.3.3"
+"bootstrap@npm:^5.3.8":
+  version: 5.3.8
+  resolution: "bootstrap@npm:5.3.8"
   peerDependencies:
     "@popperjs/core": ^2.11.8
-  checksum: 10/f05183948b00b496400cc13df5798ecab7a85975e7d9a77b314a763b574a990aec0f1bbf1913c648a93b5d8cc82e73bc05f5ec1161d2932aad7ef7f316d9c82d
+  checksum: 10/ca36e1816940ee424b91f3a534e7a359c1f180da00e92c650b92a9c2621a1ca24ee71a0886666675718b58527f9193cd0ead934da7a92108224013fa07bec2d2
   languageName: node
   linkType: hard
 
@@ -3409,9 +3409,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001663, caniuse-lite@npm:^1.0.30001669":
-  version: 1.0.30001806
-  resolution: "caniuse-lite@npm:1.0.30001806"
-  checksum: 10/25d4ed6a2f03f51519bf302739cbe53e5522205607e47455cfcf19fdde975f2fdb890b78ead7b18961d5635ee676f03c73dea1ef30e9ef1d3fe11b9f02485f86
+  version: 1.0.30001810
+  resolution: "caniuse-lite@npm:1.0.30001810"
+  checksum: 10/47d7db627c3f3d1a10e06eef9efbb84295c6ef9d959b585b64032cc293637ca7b9b6af7e5d5752972b3e690d9561f14b9561db03890fbc6e38dc1aaa54e51d97
   languageName: node
   linkType: hard
 
@@ -6062,10 +6062,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.12.7":
-  version: 3.12.7
-  resolution: "gsap@npm:3.12.7"
-  checksum: 10/60b1583c2482b753d179765a91e2f6fb3bb814e62a0c9710f02b842abc3cdc20604ab0b35da7e1ea3b0349f7df70bea1e4fddd4909631bde6a9b92632163812f
+"gsap@npm:^3.15.0":
+  version: 3.15.0
+  resolution: "gsap@npm:3.15.0"
+  checksum: 10/235b10d3c15f276a2ab2173c536c79a4ba34f9c478f4d509d3e2fc28aa4caac27fe1dd1554ce317d89e6747537367ef15c3cb98a94af685a7aa1c7f278ff6553
   languageName: node
   linkType: hard
 
@@ -7454,9 +7454,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lenis@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "lenis@npm:1.2.3"
+"lenis@npm:^1.3.26":
+  version: 1.3.26
+  resolution: "lenis@npm:1.3.26"
   peerDependencies:
     "@nuxt/kit": ">=3.0.0"
     react: ">=17.0.0"
@@ -7468,7 +7468,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10/648b27da94e5bb55187bf6fc49a6a775c1e062f9339df8c33e2f42e6b2e37b5fdb2d1e90e258925338d9c8699895bbcc849114a77a4286360d5b70779bd68a23
+  checksum: 10/d2a31ed98e1e8d0bf07a6aa7d235be21002f7d5af228c690399ae56fa1f53add88454f69461c42708a5813580c6705ffa2431045cdd699226a3c3bf611c7fdf1
   languageName: node
   linkType: hard
 
@@ -10607,10 +10607,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sage@workspace:."
   dependencies:
-    "@fancyapps/ui": "npm:^5.0.36"
-    "@fortawesome/fontawesome-svg-core": "npm:^6.7.2"
-    "@fortawesome/free-brands-svg-icons": "npm:^6.7.2"
-    "@fortawesome/free-solid-svg-icons": "npm:^6.7.2"
+    "@fancyapps/ui": "npm:^6.1.15"
+    "@fortawesome/fontawesome-svg-core": "npm:^7.3.1"
+    "@fortawesome/free-brands-svg-icons": "npm:^7.3.1"
+    "@fortawesome/free-solid-svg-icons": "npm:^7.3.1"
     "@popperjs/core": "npm:^2.11.8"
     "@roots/bud": "npm:6.24.0"
     "@roots/bud-eslint": "npm:6.24.0"
@@ -10619,11 +10619,11 @@ __metadata:
     "@roots/bud-stylelint": "npm:6.24.0"
     "@roots/eslint-config": "npm:^6.24.0"
     "@roots/sage": "npm:6.24.0"
-    bootstrap: "npm:^5.3.3"
+    bootstrap: "npm:^5.3.8"
     greensock: "npm:^1.20.2"
-    gsap: "npm:^3.12.7"
+    gsap: "npm:^3.15.0"
     hamburgers: "npm:^1.2.1"
-    lenis: "npm:^1.2.3"
+    lenis: "npm:^1.3.26"
   languageName: unknown
   linkType: soft
 
