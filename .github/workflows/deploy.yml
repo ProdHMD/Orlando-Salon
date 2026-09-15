@@ -236,8 +236,8 @@ jobs:
           ssh "$REMOTE" "set -e
             rm -rf '$BACKUP_DIR'
             mkdir -p '$BACKUP_DIR'
-            if [ -f '$BASE/wordfence-waf.php' ]; then
-              mv '$BASE/wordfence-waf.php' '$BACKUP_DIR/wordfence-waf.php'
+            if [ -f '$BASE/web/wp/wordfence-waf.php' ]; then
+              mv '$BASE/web/wp/wordfence-waf.php' '$BACKUP_DIR/wordfence-waf.php'
             fi
             if [ -f '$BASE/.user.ini' ]; then
               mv '$BASE/.user.ini' '$BACKUP_DIR/root.user.ini'
@@ -267,7 +267,7 @@ jobs:
           # Always restore the server-generated Wordfence files after rsync.
           ssh "$REMOTE" "set -e
             if [ -f '$BACKUP_DIR/wordfence-waf.php' ]; then
-              mv '$BACKUP_DIR/wordfence-waf.php' '$BASE/wordfence-waf.php'
+              mv '$BACKUP_DIR/wordfence-waf.php' '$BASE/web/wp/wordfence-waf.php'
             fi
             if [ -f '$BACKUP_DIR/root.user.ini' ]; then
               mv '$BACKUP_DIR/root.user.ini' '$BASE/.user.ini'
@@ -448,7 +448,7 @@ jobs:
           BLADE_ICONS=$(ssh "$REMOTE" "test -d '$BASE/vendor/blade-ui-kit/blade-icons' && echo yes || echo no")
           ICONS_DIR_EXISTS=$(ssh "$REMOTE" "test -d '$ICONS_DIR' && echo yes || echo no")
           FALLBACK_USED=$(ssh "$REMOTE" "test -f '$BASE/composer_fallback.env' && grep -q 'FALLBACK_FULL_INSTALL=1' '$BASE/composer_fallback.env' && echo yes || echo no")
-          WAF_FILE=$(ssh "$REMOTE" "test -f '$BASE/wordfence-waf.php' && echo preserved || echo not-present")
+          WAF_FILE=$(ssh "$REMOTE" "test -f '$BASE/web/wp/wordfence-waf.php' && echo preserved || echo not-present")
           if [ "$APP_ENV" = "live" ]; then
             WP_ROCKET_ACTIVE=$(ssh "$REMOTE" "cd '$BASE' && wp plugin is-active wp-rocket >/dev/null 2>&1 && echo yes || echo no")
           else
