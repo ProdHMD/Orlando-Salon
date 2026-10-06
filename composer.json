@@ -89,7 +89,7 @@
       "type": "package",
       "package": {
         "name": "wp-media/wp-rocket",
-        "version": "3.23.3.3",
+        "version": "3.23.5.1",
         "type": "wordpress-plugin",
         "dist": {
           "url": "gplv-plugins/wp-rocket.zip",

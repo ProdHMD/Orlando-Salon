@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb57a4869f928417a8114d82627ccf12",
+    "content-hash": "22a85515d7fe48390fae90c25808227e",
     "packages": [
         {
             "name": "brick/math",
@@ -6481,7 +6481,7 @@
         },
         {
             "name": "wp-media/wp-rocket",
-            "version": "3.23.3.3",
+            "version": "3.23.5.1",
             "dist": {
                 "type": "zip",
                 "url": "gplv-plugins/wp-rocket.zip"
